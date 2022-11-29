@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ESA.Logic;
+namespace SMA.Logic;
 
 public class User : IEquatable<User>
 {
@@ -21,22 +21,25 @@ public class User : IEquatable<User>
     public User() { }
 
     /// <summary>
-    /// This overload is the complete User object returned by the database
+    /// This overload represents the complete User object. 
+    /// This is how it should look when the database operations have finished
     /// </summary>
+    /// <param name="Id"></param>
     /// <param name="name"></param>
     /// <param name="pass"></param>
-    /// <param name="Id"></param>
-    /// <param name="eType"></param>
-    public User(int Id, string name, string pass)
+    /// <param name="first"></param>
+    /// <param name="last"></param>
+    public User(int Id, string name, string pass, string first, string last)
     {
         UserID = Id;
         Username = name;
         Password = pass;
+        FirstName = first;
+        LastName = last;
     }
     
     /// <summary>
-    /// Uses the Username field
-    /// This overload is the partial User object created by the user
+    /// This overload is the partial User object created by the user when logging in.
     /// </summary>
     /// <param name="name"></param>
     /// <param name="pass"></param>
