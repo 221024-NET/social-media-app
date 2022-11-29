@@ -1,0 +1,47 @@
+body
+{
+    background-color: rgb(42, 42, 85);
+    color: rgb(255, 245, 233);
+    margin: 0%;
+}
+
+#post-block
+{
+    margin: auto;
+    width: 30%;
+    border: 3px;
+    border-style: solid;
+    border-color: pink;
+    padding: 10px;
+}
+
+#profile-block
+{
+    float: left;
+    margin: auto;
+    width: 30%;
+    height: 100%;
+    border: 3px;
+    border-style: solid;
+    border-color: pink;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+header
+{
+    /* position: fixed; */
+    width: 100%;
+    top: 0%;
+    background-color: rgb(65, 65, 94);
+    margin:0%
+}
+
+footer
+{
+    position: fixed;
+    width: 100%;
+    bottom: 0%;
+    background-color: rgb(65, 65, 94);
+    margin:0%
+}
