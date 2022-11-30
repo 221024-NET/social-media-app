@@ -1,10 +1,9 @@
 using System.Data.SqlClient;
 using System.Text;
-using SMA.Logic;
 
 namespace SMA.Data;
 
-public class FollowsRepository 
+public class FollowsRepository : IFollowsRepository
 {
     public List<int> GetEveryoneThisUserFollows(string connValue, int userid)
     {
