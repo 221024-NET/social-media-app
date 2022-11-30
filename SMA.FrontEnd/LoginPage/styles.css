@@ -1,0 +1,31 @@
+#global-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    align-items: center;
+    gap: 25px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#user-input {
+    display: flex;
+    flex-direction: column;
+}
+
+#title {
+    text-align: center;
+}
+
+#register {
+    width: 150px;
+}
