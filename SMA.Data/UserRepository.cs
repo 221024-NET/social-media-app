@@ -7,7 +7,7 @@ namespace SMA.Data;
 
 // CRUD operations on the User object and the db
 // UserID, Username, Password, FirstName, LastName
-public class UserRepository// : IUserRepository
+public class UserRepository : IUserRepository
 {
 
     /// <summary>
