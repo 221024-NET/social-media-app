@@ -1,3 +1,18 @@
+:root {
+    --dark-blue-main: rgb(42, 42, 85);
+    --dark-blue-accent: rgb(65, 65, 94);
+    --light-text: rgb(255, 245, 233);
+    --light-pink: pink;
+    --light-blue: azure;
+}
+
+body
+{
+    background-color: rgb(42, 42, 85);
+    color: rgb(255, 245, 233);
+    margin: 0%;
+}
+
 #global-container {
     display: flex;
     flex-direction: column;
