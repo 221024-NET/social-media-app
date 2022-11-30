@@ -6,9 +6,10 @@ namespace SMA.Logic;
 public class User : IEquatable<User>
 {
     // Fields
+    // UserID, Username, Password, FirstName, LastName
     public int UserID { get; set; } // db number
-    //public string Useremail { get; set; } // login method 1 // not implemented
-    public string Username { get; set; } // login method 2
+    public string Username { get; set; } // login method 1
+    //public string Useremail { get; set; } // login method 2 // not implemented
     //public string Userphone { get; set; } // login method 3 // not implemented
     public string Password { get; set; }
     public string FirstName { get; set; }
@@ -60,11 +61,12 @@ public class User : IEquatable<User>
     // It may require more logic if multiple login methods are implemented
     public override bool Equals(object obj)
     {
-        if (obj == null) return false;
+        if (!obj) return false;
         User objAsUser = obj as User;
-        if (objAsUser == null) return false;
+        //if (!objAsUser) return false;
         else return Equals(objAsUser);
     }
+
     public override int GetHashCode()
     {
         return UserID;
@@ -81,11 +83,14 @@ public class User : IEquatable<User>
         if (other == null) return false;
         if(this.Password.Equals(other.Password))
         {
-            if(this.Username.Equals(other.Username))
+            // check all known login methods
+            if(this.Username.Equals(other.Username)
+            //    || this.Useremail.Equals(other.Useremail)
+            //    || this.Userphone.Equals(other.Userphone)
+                )
             {
                 return true;
             }
-            if(true == true) {}
             return false;
         }
         return false;
