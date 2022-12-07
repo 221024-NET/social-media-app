@@ -61,10 +61,10 @@ public class User : IEquatable<User>
     // It may require more logic if multiple login methods are implemented
     public override bool Equals(object obj)
     {
-        if (!obj) return false;
+        if (obj == null) return false;
         User objAsUser = obj as User;
-        //if (!objAsUser) return false;
-        else return Equals(objAsUser);
+        if (objAsUser == null) return false;
+        return Equals(objAsUser);
     }
 
     public override int GetHashCode()
