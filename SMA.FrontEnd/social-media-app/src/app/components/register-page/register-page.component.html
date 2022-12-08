@@ -1,0 +1,23 @@
+<div id="global-container">
+    <h1 id = "title">Register Below:</h1>
+    <form>
+        <div id = "user-input">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username">
+        </div>
+
+        <div id ="user-input">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+        </div>
+
+        <div id ="user-input">
+            <label for="password-confirm">Re-Enter Password</label>
+            <input type="password" name="password-confirm" id="password-confirm">
+        </div>
+
+        <button type="submit">Register</button>
+     </form>
+    <a id="register" [routerLink]="'/login'">Back to Login</a>
+
+
