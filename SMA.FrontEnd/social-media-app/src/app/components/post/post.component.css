@@ -1,0 +1,26 @@
+.post-block {
+    border:2px;
+    border-style: dotted;
+    border-color: rgb(43, 90, 90);
+}
+.post-userposted {
+    color: red;
+}
+.post-image {
+    text-align:center;
+    border: 2px;
+    border-style: dotted;
+    border-color: azure;
+    height:100px;
+}
+
+.post-message {
+}
+.post-likes {
+    text-align:right;
+    border: 5px;
+    border-color: black;
+}
+.post-replies {
+    color:blueviolet;
+}
