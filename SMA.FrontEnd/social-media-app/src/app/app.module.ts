@@ -8,13 +8,14 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { FeedPageComponent } from './components/feed-page/feed-page.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     RegisterPageComponent,
     FeedPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
