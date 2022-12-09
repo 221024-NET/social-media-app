@@ -7,10 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  public user = "ABCs User";
-  public message = "this message";
-  public image_url = "";
-  public likecount = 777;
+  user = "ABCs User";
+  date = "Oct 24, 2022";
+  message = "this message";
+  image_url = "";
+  likecount = 777;
 
   //constructor() { }
 }

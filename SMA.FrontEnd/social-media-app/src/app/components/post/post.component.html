@@ -1,25 +1,21 @@
 
-<p>post works!</p>
 <div class="post-block">
-    <span class="post-userposted"> {{user}} posted:</span>
+    <div class="post-userposted">{{user}} posted:</div>
+    <div class="post-date">posted on {{date}}</div>
+    <!-- alternatively use an "hours ago" syntax if recent -->>
     <div class="post-image">
-        <span>Image</span>
+        <span>(Image)</span>
     </div>
-    <div class="post-message">
-        <span> {{message}} </span>
-    </div>
-    <div class="post-likes">
-        <span>(^-^)b {{likecount}}</span>
-    </div>
-    <div class="post-replies">
+    <div class="post-message">{{message}}</div>
+    <div class="post-likes">(^-^)b {{likecount}}</div>
+    <div class="post-comment">
         <!-- comment component needed-->
         <!-- comment component needs recursion -->
         <span>This is the first reply.</span>
         <div>
-            <span>This is the second.</span>
-            <br />
-            <span>|> reply</span>
+            <div>This is the second.</div>
+            <div>|> reply</div>
         </div>
-        <span>|> reply</span>
+        <div>|> reply</div>
     </div> <!-- end comment component-->
 </div>

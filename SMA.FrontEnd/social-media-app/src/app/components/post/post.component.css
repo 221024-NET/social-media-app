@@ -3,24 +3,34 @@
     border-style: dotted;
     border-color: rgb(43, 90, 90);
 }
+
 .post-userposted {
     color: red;
 }
+
+.post-date {
+    color: green;
+    text-align:right
+}
+
 .post-image {
     text-align:center;
     border: 2px;
     border-style: dotted;
     border-color: azure;
-    height:100px;
+    height:20px;
 }
 
 .post-message {
 }
+
 .post-likes {
+    color: blue;
     text-align:right;
     border: 5px;
     border-color: black;
 }
-.post-replies {
+
+.post-comment {
     color:blueviolet;
 }
