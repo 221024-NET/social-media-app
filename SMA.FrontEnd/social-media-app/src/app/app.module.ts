@@ -7,9 +7,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { FeedPageComponent } from './components/feed-page/feed-page.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
-import { PostComponent } from './components/post/post.component';
-import { CommentComponent } from './components/comment/comment.component';
-import { LikeComponent } from './components/like/like.component';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +16,6 @@ import { LikeComponent } from './components/like/like.component';
     RegisterPageComponent,
     FeedPageComponent,
     ProfilePageComponent,
-    PostComponent,
-    CommentComponent,
-    LikeComponent
   ],
   imports: [
     BrowserModule,
