@@ -13,6 +13,7 @@ export class LoginPageComponent implements OnInit {
   username: any;
   password: any;
   formdata: any;
+  submitted = false;
   //user = new User(1, "", "");
 
   constructor() { }
@@ -29,6 +30,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit(data: any) {
+    this.submitted = true;
     this.username = data.username;
     this.password = data.password;
     console.log(this.username);
