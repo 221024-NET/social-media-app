@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SMA.BackendOps.Models
 {
-    
 
-    [Table("User", Schema = "SMA")]
+
+    [Table("Users", Schema = "SMA")]
     public class User
     {
         [Key]
@@ -16,5 +16,6 @@ namespace SMA.BackendOps.Models
         public string? first_name { get; set; }
         public string? last_name { get; set; }
         public long? phone_number { get; set; }
+
     }
 }
