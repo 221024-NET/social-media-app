@@ -1,14 +1,14 @@
 <div id="global-container">
     <h1 id = "title">Welcome to Social Media App!</h1>
-    <form>
+    <form [formGroup]="formdata" (ngSubmit)="onSubmit(formdata.value)">
         <div id = "user-input">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" formControlName = "username">
         </div>
 
         <div id ="user-input">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" formControlName = "password">
         </div>
 
         <button type="submit">Login</button>
