@@ -34,6 +34,14 @@ form {
     text-align: center;
 }
 
+.ng-valid[required], .ng-valid.required {
+    border-bottom: 5px solid green;
+}
+
+.ng-invalid:not(form) {
+    border-bottom: 5px solid red;
+}
+
 body
 {
     background-color: var(--dark-blue-main);
