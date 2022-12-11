@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RegisterService } from 'src/app/services/register.service';
-import { User } from 'src/app/interfaces/user';
+import { BaseUser } from 'src/app/interfaces/base-user';
 
 @Component({
   selector: 'app-register-page',
@@ -13,8 +13,9 @@ export class RegisterPageComponent {
 
   ngOnInit() {}
   
+  yeah: any;
 
-  newUser: User = {
+  newUser: BaseUser = {
     userId: 0,
     username: '',
     password: ''
@@ -22,6 +23,9 @@ export class RegisterPageComponent {
 
   onSubmit(): void {
     //this.register.makeUser(this.newUser);
+    const help: any = this.onCheckUser();
+    this.yeah = help;
+    console.log(this.yeah.username);
   }
 
   onCheckUser() {

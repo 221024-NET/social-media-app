@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../interfaces/user';
+import { BaseUser } from '../interfaces/base-user';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +26,15 @@ export class RegisterService {
   //        - if matched, create user (POST)
 
 
-  checkUser(username: string) {
-    return this.http.get(this.url + `?username=${username}`);
+  checkUser(username: string): Observable<BaseUser> {
+    const checkedUser: any = this.http.get<User>(this.url + `?username=${username}`)
+                              .pipe(map((user: User) => new User(user)));
+
+    console.log(checkedUser.username);
+    return checkedUser;
   }
 
-  makeUser(user: User) {
+  makeUser(user: BaseUser) {
     this.http.post(this.url, user);
   }
 
