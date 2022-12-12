@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
 import { FormControl } from '@angular/forms';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css', '../../app.component.css']
+  styleUrls: ['./login-page.component.css', '../../app.component.css'],
+  providers: [LoginServiceService]
 })
 export class LoginPageComponent implements OnInit {
-  username: any;
-  password: any;
   formdata: any;
   submitted = false;
-  //user = new User(1, "", "");
+  formUser: User = new User(0, "", "");
+  loggedInUser: User = new User(0, "", "");
 
-  constructor() { }
+  constructor(private loginService : LoginServiceService) { }
 
   ngOnInit(): void {
     this.formdata = new FormGroup({
@@ -31,10 +32,24 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit(data: any) {
     this.submitted = true;
-    this.username = data.username;
-    this.password = data.password;
-    console.log(this.username);
-    console.log(this.password);
+    this.formUser.username = data.username;
+    this.formUser.password = data.password;
+
+    // this.loginService.login(this.formUser).subscribe(
+    //   (response) => console.log(response)
+    // )
+
+    this.loginService.getAccountById(3).subscribe(
+      (response) => console.log(response)
+    )
+    
+    console.log(this.formUser.username);
+    console.log(this.formUser.password);
+    console.log(this.formUser.user_id);
   }
+
+  
+
+  
 
 }

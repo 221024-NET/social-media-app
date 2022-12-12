@@ -41,19 +41,20 @@ namespace SMA.BackendOps.Controllers
             return user;
         }
 
-        [HttpPost("{username}, {password}")]
-        public async Task<ActionResult<User>> Login(string username, string password)
+        [HttpPost("login")]
+        public async Task<ActionResult<User>> Login(User userToLogin)
         {
             List<User> users = await _context.Users.ToListAsync();
 
             foreach (User user in users)
             {
-                if(user.username == username && user.password == password)
+                if (user.username == userToLogin.username && user.password == userToLogin.password)
                 {
                     var login = await _context.Users.FindAsync(user.user_id);
                     return login;
                 }
             }
+
             return NotFound();
 
 
