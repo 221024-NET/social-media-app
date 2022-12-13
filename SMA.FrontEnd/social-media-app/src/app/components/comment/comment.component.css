@@ -1,21 +1,24 @@
 .comment-margin {
-    margin: 0%;
+    margin: 1%;
     background-color:beige;
     border: 0px;
     display: flex;
     flex-direction: column;
 }
+
 .comment-box {
-    margin: 2%;
-    color:blueviolet;
-    border: 5px;
-    border-color: pink;
-    background-color: aqua;
+    margin: 1%;
+    background-color:lightgreen;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
 }
 
 .comment-user-selfie {
-    width:20px;
-    height: 20px;
+    width:30px;
+    height: 30px;
     display: flex;
     flex-direction: left;
 }
@@ -23,7 +26,7 @@
 .comment-user {
     display:flex;
     flex-direction: row;
-    color:aqua;
+    color:rgb(221, 121, 28);
 
 }
 
@@ -35,35 +38,4 @@
 
 .comment-message {
     background-color: white;
-}
-
-
-
-
-.column
-{
-    display: flex;
-    flex-direction: column;
-    width: 32%;
-}
-
-.row
-{
-    display: flex;
-    flex-direction: row;
-}
-
-.internals
-{
-    margin: 10px;
-}
-
-.center
-{
-    align-items: center;
-}
-
-.align-left
-{
-    align-items: left;
 }

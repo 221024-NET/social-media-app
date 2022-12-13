@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-//import { CommentComponent } from './components/comment/comment.component';
+//import { CommentComponent } from './components/comment/comment.component'; // already imported globally
 
 
 @Component({
@@ -14,7 +14,7 @@ export class PostComponent {
   message = "this message";
   image_url = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
   likecount = 777;
-  //comments = [new CommentComponent(), new CommentComponent];
+  //comments = new CommentComponent();
 
   //constructor() { }
 }

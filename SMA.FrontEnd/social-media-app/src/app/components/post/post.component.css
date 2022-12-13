@@ -2,38 +2,33 @@
     border:2px;
     background-color: aquamarine;
     border-style:groove;
-    border-color: rgb(43, 90, 90);
+    border-color: gray;
 }
 
 .post-header {
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: 3px;
 }
 
 .post-user-selfie {
-    align-items: left;
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
 }
 
 .post-user {
-    align-items: center;
     color: black;
 }
 
 .post-date {
-    align-items: right;
-    color: green;
-    text-align:right;
+    color: lightgray;
+    text-align: right;
 }
 
 .post-image {
     text-align:center;
-    border: 1px;
-    border-style: dotted;
-    border-color: azure;
-    height:30px;
+    height: 350px;
 }
 
 .post-message {
@@ -49,5 +44,4 @@
 
 .post-comment {
     margin:1%;
-    border: 0px;
 }
