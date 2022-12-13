@@ -1,0 +1,69 @@
+.comment-margin {
+    margin: 0%;
+    background-color:beige;
+    border: 0px;
+    display: flex;
+    flex-direction: column;
+}
+.comment-box {
+    margin: 2%;
+    color:blueviolet;
+    border: 5px;
+    border-color: pink;
+    background-color: aqua;
+}
+
+.comment-user-selfie {
+    width:20px;
+    height: 20px;
+    display: flex;
+    flex-direction: left;
+}
+
+.comment-user {
+    display:flex;
+    flex-direction: row;
+    color:aqua;
+
+}
+
+.comment-date {
+    display:flex;
+    flex-direction:right;
+    color:black
+}
+
+.comment-message {
+    background-color: white;
+}
+
+
+
+
+.column
+{
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+}
+
+.row
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.internals
+{
+    margin: 10px;
+}
+
+.center
+{
+    align-items: center;
+}
+
+.align-left
+{
+    align-items: left;
+}

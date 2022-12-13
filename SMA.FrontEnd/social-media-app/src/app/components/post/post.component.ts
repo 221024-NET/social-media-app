@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+//import { CommentComponent } from './components/comment/comment.component';
 
 
 @Component({
@@ -8,10 +9,12 @@ import { Component } from '@angular/core';
 })
 export class PostComponent {
   user = "ABCs User";
+  user_selfie = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
   date = "Oct 24, 2022";
   message = "this message";
-  image_url = "";
+  image_url = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
   likecount = 777;
+  //comments = [new CommentComponent(), new CommentComponent];
 
   //constructor() { }
 }

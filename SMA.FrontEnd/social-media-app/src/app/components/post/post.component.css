@@ -1,27 +1,43 @@
 .post-block {
     border:2px;
-    border-style: dotted;
+    background-color: aquamarine;
+    border-style:groove;
     border-color: rgb(43, 90, 90);
 }
 
-.post-userposted {
-    color: red;
+.post-header {
+    display: flex;
+    flex-direction: row;
+    margin: 3px;
+}
+
+.post-user-selfie {
+    align-items: left;
+    width: 20px;
+    height: 20px;
+}
+
+.post-user {
+    align-items: center;
+    color: black;
 }
 
 .post-date {
+    align-items: right;
     color: green;
-    text-align:right
+    text-align:right;
 }
 
 .post-image {
     text-align:center;
-    border: 2px;
+    border: 1px;
     border-style: dotted;
     border-color: azure;
-    height:20px;
+    height:30px;
 }
 
 .post-message {
+    text-align: center;
 }
 
 .post-likes {
@@ -32,5 +48,6 @@
 }
 
 .post-comment {
-    color:blueviolet;
+    margin:1%;
+    border: 0px;
 }
