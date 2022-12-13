@@ -32,23 +32,31 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit(data: any) {
     this.submitted = true;
-    this.formUser.username = data.username;
-    this.formUser.password = data.password;
+    if(!this.formdata.valid) {
+      this.formdata.markAllAsTouched();
+    }
+    else {
 
-    this.loginService.login(this.formUser).subscribe(
-      response => {
-        this.loggedInUser = response;
-        console.log(this.loggedInUser);
-        //console.log(this.loggedInUser.username);
-      },
-      error => {
-        console.log(error);
-      }
-    )
-    
-    console.log(this.formUser.username);
-    console.log(this.formUser.password);
-    console.log(this.formUser.user_id);
+      this.formUser.username = data.username;
+      this.formUser.password = data.password;
+  
+      this.loginService.login(this.formUser).subscribe(
+        response => {
+          this.loggedInUser = response;
+          console.log(this.loggedInUser);
+          //console.log(this.loggedInUser.username);
+        },
+        error => {
+          this.formdata.form.controls['username'].setErrors({'incorrect':true});
+          console.log(error);
+        }
+      )
+      // console.log(this.formUser.username);
+      // console.log(this.formUser.password);
+      // console.log(this.formUser.user_id);
+    }
+
+
   }
 
   
