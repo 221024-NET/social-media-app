@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   formdata: any;
   submitted = false;
   formUser: User = new User(0, "", "");
-  loggedInUser: User = new User(0, "", "");
+  loggedInUser = new User(0, "", "");
 
   constructor(private loginService : LoginServiceService) { }
 
@@ -35,12 +35,10 @@ export class LoginPageComponent implements OnInit {
     this.formUser.username = data.username;
     this.formUser.password = data.password;
 
-    // this.loginService.login(this.formUser).subscribe(
-    //   (response) => console.log(response)
-    // )
-
-    this.loginService.getAccountById(3).subscribe(
-      (response) => console.log(response)
+    this.loginService.login(this.formUser).subscribe(
+      response => {
+        console.log(response);
+      }
     )
     
     console.log(this.formUser.username);
