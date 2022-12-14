@@ -1,3 +1,11 @@
+:root {
+    --dark-blue-main: rgb(42, 42, 85);
+    --dark-blue-accent: rgb(65, 65, 94);
+    --light-text: rgb(255, 245, 233);
+    --light-pink: pink;
+    --light-blue: azure;
+}
+
 #global-container {
     display: flex;
     flex-direction: column;
@@ -24,4 +32,24 @@ form {
 
 #title {
     text-align: center;
+}
+
+.ng-valid[required], .ng-valid.required {
+    border-bottom: 5px solid green;
+}
+
+.ng-invalid:not(form) {
+    border-bottom: 5px solid red;
+}
+
+body
+{
+    background-color: var(--dark-blue-main);
+    color: var(--light-text);
+    margin: 0%;
+}
+
+a:visited
+{
+    color: var(--light-pink);
 }

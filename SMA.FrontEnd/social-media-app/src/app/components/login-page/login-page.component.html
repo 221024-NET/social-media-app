@@ -1,18 +1,26 @@
 <div id="global-container">
     <h1 id = "title">Welcome to Social Media App!</h1>
-    <form>
+    <form [formGroup]="formdata" (ngSubmit)="onSubmit(formdata.value)">
         <div id = "user-input">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" formControlName = "username" required>
+            <div *ngIf="formdata.controls['username'].invalid && (formdata.controls['username'].dirty || formdata.controls['username'].touched)">
+                <div *ngIf="formdata.controls['username'].errors.required">Please enter username.</div>
+                </div>
         </div>
 
         <div id ="user-input">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" formControlName = "password" required>
+            <div *ngIf="formdata.controls['password'].invalid && (formdata.controls['password'].dirty || formdata.controls['password'].touched)">
+                <div *ngIf="formdata.controls['password'].errors.required">Please enter password.</div>
+                </div>
         </div>
+
+        <div> {{errorMessage}} </div>
 
         <button type="submit">Login</button>
      </form>
     <a id="register" [routerLink]="'/register'">Don't have an account? Click here to register</a>
 
-
+</div>
