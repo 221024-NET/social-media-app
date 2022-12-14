@@ -1,3 +1,4 @@
+
 export class User {
     user_id: number;
     username: string;
@@ -13,5 +14,11 @@ export class User {
         this.first_name = first_name;
         this.last_name = last_name;
         this.phone_number = phone_number;
+    }
+
+    constructor(user_id: number, username: string, password: string) {
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
     }
 }
