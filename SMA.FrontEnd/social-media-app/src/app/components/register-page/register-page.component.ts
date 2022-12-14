@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { RegisterService } from 'src/app/services/register.service';
-import { BaseUser } from 'src/app/interfaces/base-user';
 import { User } from 'src/app/classes/user';
 import { map } from 'rxjs';
 
@@ -9,14 +8,14 @@ import { map } from 'rxjs';
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css', '../../app.component.css']
 })
-export class RegisterPageComponent {
+export class RegisterPageComponent implements OnInit{
 
   constructor(private register: RegisterService) {}
 
   ngOnInit() {}
 
-  newUser: BaseUser = {
-    userId: 0,
+  newUser: User = {
+    user_id: 0,
     username: '',
     password: '',
     first_name: undefined,
@@ -24,7 +23,7 @@ export class RegisterPageComponent {
     phone_number: undefined
   };
   
-  isValidUser: boolean = false;
+  userExists: boolean = true;
 
   onSubmit(): void {
     //this.register.onMakeUser(this.newUser);
@@ -32,7 +31,7 @@ export class RegisterPageComponent {
   }
 
   onCheckUser() {
-    this.register.checkUser(this.newUser).subscribe(data => this.isValidUser = data.valueOf());
+    this.register.checkUser(this.newUser).subscribe(data => this.userExists = data.valueOf());
   }
 
   onMakeUser() {
