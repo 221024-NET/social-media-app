@@ -94,6 +94,26 @@ namespace SMA.BackendOps.Controllers
             return CreatedAtAction("GetUser", new { id = user.user_id }, user);
         }
 
+        // POST: api/Users
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost("checkuser")]
+        public async Task<ActionResult<Boolean>> CheckUser(User checkUser)
+        {
+            var user = await _context.Users.Where(u => u.username == checkUser.username).FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            return true;
+            /*
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetUser", new { id = user.user_id }, user);*/
+        }
+
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
