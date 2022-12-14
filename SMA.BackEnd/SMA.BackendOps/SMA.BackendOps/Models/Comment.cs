@@ -15,6 +15,6 @@ namespace SMA.BackendOps.Models
         [ForeignKey("Post")]
         public int post_id { get; set; }
         [ForeignKey("Comment")]
-        public int parent_comment_id { get; set; }
+        public int? parent_comment_id { get; set; }
     }
 }

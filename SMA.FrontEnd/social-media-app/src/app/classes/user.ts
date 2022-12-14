@@ -1,4 +1,3 @@
-
 export class User {
     user_id: number;
     username: string;
@@ -15,4 +14,5 @@ export class User {
         this.last_name = last_name;
         this.phone_number = phone_number;
     }
+
 }
