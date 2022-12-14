@@ -41,6 +41,17 @@ namespace SMA.BackendOps.Controllers
             return user;
         }
 
+        [HttpPost("login")]
+        public ActionResult<User> Login(User userToLogin)
+        {
+            var response = _context.Users.Where(user => user.username == userToLogin.username && user.password == userToLogin.password).FirstOrDefault();
+            if (response == null)
+            {
+                return BadRequest();
+            }
+            return response;
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
