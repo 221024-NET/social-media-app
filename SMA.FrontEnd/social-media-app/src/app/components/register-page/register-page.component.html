@@ -21,12 +21,10 @@
     <a id="register" [routerLink]="'/login'">Back to Login</a>
     -->
 <p>User:</p>
-<br/>
 {{ newUser | json }}
 <br/>
-<p>User Type:</p>
-{{ yeah }}
 <br/>
+{{isValidUser}}
 
     <form #registerForm="ngForm">
         <div class="form-group">
@@ -38,6 +36,7 @@
             <input type="text" class="form-control" id="password" name="password" required [(ngModel)]="newUser.password">            
         </div>
         <button type="submit" (click)="onSubmit()">Submit</button>
+        <button  (click)="onMakeUser()">Register</button>
 
     </form>
 

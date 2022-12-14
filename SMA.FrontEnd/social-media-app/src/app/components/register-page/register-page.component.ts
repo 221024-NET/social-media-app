@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RegisterService } from 'src/app/services/register.service';
 import { BaseUser } from 'src/app/interfaces/base-user';
+import { User } from 'src/app/classes/user';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-register-page',
@@ -12,24 +14,27 @@ export class RegisterPageComponent {
   constructor(private register: RegisterService) {}
 
   ngOnInit() {}
-  
-  yeah: any;
 
   newUser: BaseUser = {
     userId: 0,
     username: '',
     password: ''
   };
+  
+  isValidUser = true;
 
   onSubmit(): void {
-    //this.register.makeUser(this.newUser);
-    const help: any = this.onCheckUser();
-    this.yeah = help;
-    console.log(this.yeah.username);
+    //this.register.onMakeUser(this.newUser);
+    this.onCheckUser();
   }
 
   onCheckUser() {
-    return this.register.checkUser(this.newUser.username);
+
+    this.register.checkUser(this.newUser);
+  }
+
+  onMakeUser() {
+    this.register.makeUser(this.newUser);
   }
 
 }

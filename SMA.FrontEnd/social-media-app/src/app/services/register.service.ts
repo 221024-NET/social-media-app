@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, filter, catchError } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { BaseUser } from '../interfaces/base-user';
 import { User } from '../classes/user';
@@ -26,16 +26,21 @@ export class RegisterService {
   //        - if matched, create user (POST)
 
 
-  checkUser(username: string): Observable<BaseUser> {
-    const checkedUser: any = this.http.get<User>(this.url + `?username=${username}`)
-                              .pipe(map((user: User) => new User(user)));
+  checkUser(user: BaseUser): Observable<BaseUser[]> {
+    //const checkedUser: any = this.http.get<User>(this.url + "/1");//`?username=${user.username}`)
+                                                //.subscribe((newUser: BaseUser) => user = {});
+                              
+    
+    //.pipe(map((user: User) => new User(user)));
 
-    console.log(checkedUser.username);
-    return checkedUser;
+    //console.log(checkedUser.username);
+    //return checkedUser;
+
+    return this.http.get<BaseUser[]>(this.url).pipe(map(trueUser => trueUser.filter((theUser: BaseUser) => theUser.username === user.username)));
   }
 
   makeUser(user: BaseUser) {
-    this.http.post(this.url, user);
+    this.http.post<BaseUser>(this.url, user);
   }
 
 }
