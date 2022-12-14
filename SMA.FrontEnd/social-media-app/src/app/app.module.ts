@@ -10,13 +10,14 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     RegisterPageComponent,
     FeedPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
