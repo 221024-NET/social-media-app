@@ -18,10 +18,13 @@ export class RegisterPageComponent {
   newUser: BaseUser = {
     userId: 0,
     username: '',
-    password: ''
+    password: '',
+    first_name: undefined,
+    last_name: undefined,
+    phone_number: undefined
   };
   
-  isValidUser = true;
+  isValidUser: boolean = false;
 
   onSubmit(): void {
     //this.register.onMakeUser(this.newUser);
@@ -29,8 +32,7 @@ export class RegisterPageComponent {
   }
 
   onCheckUser() {
-
-    this.register.checkUser(this.newUser);
+    this.register.checkUser(this.newUser).subscribe(data => this.isValidUser = data.valueOf());
   }
 
   onMakeUser() {

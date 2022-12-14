@@ -26,21 +26,13 @@ export class RegisterService {
   //        - if matched, create user (POST)
 
 
-  checkUser(user: BaseUser): Observable<BaseUser[]> {
-    //const checkedUser: any = this.http.get<User>(this.url + "/1");//`?username=${user.username}`)
-                                                //.subscribe((newUser: BaseUser) => user = {});
-                              
-    
-    //.pipe(map((user: User) => new User(user)));
-
-    //console.log(checkedUser.username);
-    //return checkedUser;
-
-    return this.http.get<BaseUser[]>(this.url).pipe(map(trueUser => trueUser.filter((theUser: BaseUser) => theUser.username === user.username)));
+  checkUser(user: BaseUser): Observable<boolean> {
+    return this.http.post(this.url + "/checkuser", user).pipe(map(res => {if(res) return true; else return false}));
   }
+  
 
   makeUser(user: BaseUser) {
-    this.http.post<BaseUser>(this.url, user);
+    this.http.post(this.url, user).subscribe(data => console.log(data));
   }
 
 }
