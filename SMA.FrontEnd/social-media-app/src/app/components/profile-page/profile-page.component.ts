@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../classes/user';
 import { FormGroup } from '@angular/forms';
+import { Input } from '@angular/core';
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -9,11 +10,17 @@ import { FormGroup } from '@angular/forms';
 export class ProfilePageComponent implements OnInit{
   profileForm: any;
   editingMode: boolean = false;
-  user: User = new User(1, "CalvinUser", "password", "FirstName", "LastName", 123);
+  user: User = new User(0, "", "", "", "", 0);
+  
+  constructor() {}
 
   ngOnInit(): void {
-    
   }
+
+  // @Input()
+  // public set user(user: User) {
+  //   this._user = user;
+  // }
 
   toggleEditingMode() {
     this.editingMode = true;
