@@ -16,6 +16,7 @@ export class LoginPageComponent implements OnInit {
   submitted = false;
   formUser: User = new User(0, "", "");
   loggedInUser: any;
+  errorMessage = "";
 
   constructor(private loginService : LoginServiceService) { }
 
@@ -42,18 +43,15 @@ export class LoginPageComponent implements OnInit {
   
       this.loginService.login(this.formUser).subscribe(
         response => {
+          this.errorMessage = "";
           this.loggedInUser = response;
-          console.log(this.loggedInUser);
-          //console.log(this.loggedInUser.username);
+          //console.log(this.loggedInUser);
         },
         error => {
-          this.formdata.form.controls['username'].setErrors({'incorrect':true});
+          this.errorMessage = "Your credentials are wrong, please try again."
           console.log(error);
         }
       )
-      // console.log(this.formUser.username);
-      // console.log(this.formUser.password);
-      // console.log(this.formUser.user_id);
     }
 
 
