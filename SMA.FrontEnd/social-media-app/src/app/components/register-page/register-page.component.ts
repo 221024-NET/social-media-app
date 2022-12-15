@@ -24,6 +24,8 @@ export class RegisterPageComponent implements OnInit{
   };
   
   userExists: boolean = true;
+  passwordCheck?: string = undefined;
+  passwordMatch: boolean = false;
 
   onSubmit(): void {
     //this.register.onMakeUser(this.newUser);
@@ -35,7 +37,15 @@ export class RegisterPageComponent implements OnInit{
   }
 
   onMakeUser() {
-    this.register.makeUser(this.newUser);
+    //if (this.newUser.password === this.passwordCheck){
+      //this.passwordMatch = true;
+      this.register.makeUser(this.newUser);
+      
+    //}
+    //else {
+      //this.passwordMatch = false;
+    //}
+
   }
 
 }
