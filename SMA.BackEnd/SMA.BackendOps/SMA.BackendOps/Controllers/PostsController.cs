@@ -99,6 +99,14 @@ namespace SMA.BackendOps.Controllers
             return NoContent();
         }
 
+        //GET: api/Posts/getParentComments/{post_id} 
+        //gets a list of all parent comments (comments that are not replies) when given a post id, returns nothing if no parent comments
+        [HttpGet("getParentComments/{post_id}")]
+        public async Task<ActionResult<IEnumerable<Comment>>> getParentComments(int post_id)
+        {
+            var parent_comments = await _context.Comments.Where(c=>c.post_id ==post_id && c.parent_comment_id==null).ToListAsync();
+            return parent_comments;
+        }
         private bool PostExists(int id)
         {
             return _context.Posts.Any(e => e.post_id == id);
