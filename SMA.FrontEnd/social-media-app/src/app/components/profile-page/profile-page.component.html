@@ -1,1 +1,25 @@
 <p>profile-page works!</p>
+<div [hidden]="editingMode">
+  <h1>Your Profile</h1>
+  <!--to do: add image field in this form and user.ts if there is time-->
+  {{user.first_name}} {{user.last_name}} | {{user.username}}
+  <br />
+  {{user.phone_number}}
+  <button (click)="toggleEditingMode()">Update Profile</button>
+</div>
+
+<!--Form current logs the inputs into console, need to hook up submitChanges button to PUT user/id service-->
+
+<form [hidden]="!editingMode" #profileForm="ngForm" (ngSubmit)="submitChanges(profileForm.value)">
+  <h1>UnHiddened</h1>
+  <label>First Name: </label>
+  <input type="text" ngModel name="firstName" />
+  <br />
+  <label>Last Name: </label>
+  <input type="text" ngModel name="lastName" />
+  <br />
+  <label>Phone Number</label>
+  <input type="number" ngModel name="phoneNumber"/>
+  <br />
+  <button value="submit">Submit Changes</button>
+</form>

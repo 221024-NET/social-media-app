@@ -1,0 +1,41 @@
+.comment-margin {
+    margin: 1%;
+    background-color:beige;
+    border: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-box {
+    margin: 1%;
+    background-color:lightgreen;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+}
+
+.comment-user-selfie {
+    width:30px;
+    height: 30px;
+    display: flex;
+    flex-direction: left;
+}
+
+.comment-user {
+    display:flex;
+    flex-direction: row;
+    color:rgb(221, 121, 28);
+
+}
+
+.comment-date {
+    display:flex;
+    flex-direction:right;
+    color:black
+}
+
+.comment-message {
+    background-color: white;
+}
