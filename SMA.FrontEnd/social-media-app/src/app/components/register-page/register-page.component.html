@@ -2,7 +2,7 @@
     <h1 id = "title">Register Below:</h1>
     
 <!-- Main Form -->
-    <div>
+    <div class="row">
         <form #registerForm="ngForm" name="registration">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -22,7 +22,7 @@
     </div>
 
 <!-- Validations -->
-    <div>
+    <div class="row">
         <div [hidden]="username.valid || username.untouched">
             <p>Please enter a username between 4 and 20 characters.</p>
         </div>
@@ -31,7 +31,7 @@
             <p>Username is taken. Please try another.</p>
         </div>
 
-        <div [hidden]="password.valid || password.untouched">
+        <div [hidden]="password.valid || password.untouched || username.invalid">
             <p>Please enter a password over 4 characters.</p>
         </div>
     </div>
