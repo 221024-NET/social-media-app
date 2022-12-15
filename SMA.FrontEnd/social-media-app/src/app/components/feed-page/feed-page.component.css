@@ -12,7 +12,7 @@
 
 .column-section {
     margin: 10px;
-    width: 30%;
+    width: 32%;
 }
 
 .row
@@ -34,7 +34,7 @@
 #personal-section {}
 
 #post-block {
-    height:300px;
+    height:600px;
     overflow: auto;
 }
 
@@ -47,7 +47,7 @@
 #goals {}
 
 #display-block {
-    height:300px;
+    height:600px;
     overflow: auto;
 }
 
