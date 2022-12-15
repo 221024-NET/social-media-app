@@ -1,1 +1,71 @@
-<p>feed-page works!</p>
+
+<div class="column-structure-page">
+    <div id="personal-section" class="column-section">
+        <div class="row">
+            <div id="profile-block"  class="column border">
+                <div class="row">
+                    <span>You are logged in as:</span>
+                    <div class="column">
+                        <div>
+                            <img id="profile-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
+                        </div>
+                        <div id="profile-header row">
+                            <span>{{user.username}}</span>
+                            <br />
+                            <span>{{user.first_name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="stretch" class="column border">
+                <div>Your friends</div>
+                <ul>
+                </ul>
+            </div>
+            <div id="goals"  class="column border">
+                <ul>
+                    <li>11111111111</li>
+                    <li>22222222222</li>
+                    <li>33333333333</li>
+                    <li>44444444444</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="post-block" class="column-section">
+        <div class="row">
+            <div id="post-block-header" class="border">
+                <p style="text-align:center">Recent posts</p>
+            </div>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+            <div class="border"><app-post-summary></app-post-summary></div><br/>
+        </div>
+    </div>
+
+
+    <div id="display-block" class="column-section border">
+        <div class="row">
+            <app-post></app-post>
+        </div>
+    </div>
+</div>
+
+
+
+
+
