@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 //import { CommentComponent } from './components/comment/comment.component'; // already imported globally
+import { PostClass } from 'src/app/classes/post-class';
+import { PostService } from 'src/app/services/post.service';
 
 
 @Component({
@@ -8,13 +10,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  user = "ABCs User";
-  user_selfie = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
-  date = "Oct 24, 2022";
-  message = "this message";
-  image_url = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
-  likecount = 777;
-  //comments = new CommentComponent();
+  public post: PostClass = new PostClass(0,"name","path","today","Hello, World!","",88);
 
-  //constructor() { }
+  constructor(private postalservice: PostService) { }
+
+  ngOnInit() { }
+
+  //@Input()
+  public set ID(id:number) {
+    this.post.postid = id;
+  }
 }
