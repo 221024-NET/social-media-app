@@ -5,6 +5,7 @@ import { User } from 'src/app/classes/user';
 import { FormControl } from '@angular/forms';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { Injectable } from '@angular/core';
+import { DataTransferService } from 'src/app/services/data-transfer.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class LoginPageComponent implements OnInit {
   currentUser: User = new User(0, "", "");
   errorMessage = "";
 
-  constructor(private loginService : LoginServiceService, private router: Router) { }
+  constructor(private loginService : LoginServiceService, private router: Router, private dataTransfer: DataTransferService ) { }
 
   @Output() login = new EventEmitter<User>();
 
@@ -60,8 +61,12 @@ export class LoginPageComponent implements OnInit {
           this.currentUser.first_name = this.logInResponse.first_name;
           this.currentUser.last_name = this.logInResponse.last_name;
           this.currentUser.phone_number = this.logInResponse.phone_number;
+          
 
-          this.login.emit(this.currentUser);
+          console.log(this.currentUser);
+
+          //this.login.emit(this.currentUser);
+          this.dataTransfer.setData(this.currentUser);
 
 
           this.router.navigateByUrl('/profile');
