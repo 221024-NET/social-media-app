@@ -1,0 +1,19 @@
+#post-sum-unit {
+    display: flex;
+}
+
+#post-sum-header {}
+
+.column {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.post-img {
+    height: 100px;
+    width: auto;
+}
+
