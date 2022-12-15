@@ -61,9 +61,6 @@ export class LoginPageComponent implements OnInit {
           this.currentUser.first_name = this.logInResponse.first_name;
           this.currentUser.last_name = this.logInResponse.last_name;
           this.currentUser.phone_number = this.logInResponse.phone_number;
-          
-
-          console.log(this.currentUser);
 
           //this.login.emit(this.currentUser);
           this.dataTransfer.setData(this.currentUser);
