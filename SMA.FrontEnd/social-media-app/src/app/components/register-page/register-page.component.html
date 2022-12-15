@@ -6,7 +6,7 @@
         <form #registerForm="ngForm" name="registration">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required minlength="4" maxLength="20" [(ngModel)]="newUser.username" #username="ngModel" (change)="onSubmit()">
+                <input type="text" class="form-control" id="username" name="username" required minlength="4" maxLength="20" [(ngModel)]="newUser.username" #username="ngModel" (change)="onCheckUser()">
             </div>
             <div class="form-group"> <!--</div> [hidden]="!userExists || username.invalid">-->
                 <label for="password">Password</label>
@@ -44,11 +44,12 @@
         <div [hidden]="username.valid || username.untouched">
             <p>Please enter a username between 4 and 20 characters.</p>
         </div>
-
+    <div [hidden]="username.invalid || username.untouched">
         <div [hidden]="!userExists">
             <p>Username is taken. Please try another.</p>
         </div>
 
+    </div>
         <div [hidden]="password.valid || password.untouched || username.invalid">
             <p>Please enter a password over 4 characters.</p>
         </div>
