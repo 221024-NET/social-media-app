@@ -3,6 +3,8 @@ import { User } from '../../classes/user';
 import { FormGroup } from '@angular/forms';
 import { Input } from '@angular/core';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
+import { ProfileService } from 'src/app/services/profile.service';
+
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -15,20 +17,12 @@ export class ProfilePageComponent implements OnInit{
   
   
   
-  constructor(private dataTransfer: DataTransferService) {
+  constructor(private dataTransfer: DataTransferService, private profileService: ProfileService) {
   }
 
   ngOnInit(): void {
     this.user = this.dataTransfer.getData()
   }
-
-  //console.log(this.dataTransfer.getData());
-  //temp = this.dataTransfer.getData();
-
-  // @Input()
-  // public set user(user: User) {
-  //   this._user = user;
-  // }
 
   toggleEditingMode() {
     this.editingMode = true;
@@ -41,5 +35,13 @@ export class ProfilePageComponent implements OnInit{
     this.user.phone_number = data.phoneNumber
     console.warn(data);
     this.editingMode = false;
+    this.profileService.updateUser(this.user.user_id, this.user).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
