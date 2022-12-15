@@ -6,17 +6,35 @@
         <form #registerForm="ngForm" name="registration">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required minlength="4" maxLength="20" [(ngModel)]="newUser.username" #username="ngModel" (change)="onSubmit()">
-                
-
-
-                </div>
-            <div class="form-group" [hidden]="!userExists || username.invalid">
-                <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" name="password" required minlength="4"  [(ngModel)]="newUser.password" #password="ngModel">
+                <input type="text" class="form-control" id="username" name="username" required minlength="4" maxLength="20" [(ngModel)]="newUser.username" #username="ngModel" (change)="onCheckUser()">
             </div>
+            <div class="form-group"> <!--</div> [hidden]="!userExists || username.invalid">-->
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required minlength="4"  [(ngModel)]="newUser.password" #password="ngModel">
+            </div>
+            <!--<div class="form-group"> 
+                <label for="passwordCheck">Reenter Password</label>
+                <input type="password" class="form-control" id="passwordCheck" name="passwordCheck" required minlength="4"  [(ngModel)]="passwordCheck">
+            </div>-->
             <div>
-                <button type="submit" (click)="onMakeUser()" [disabled]="password.invalid || password.untouched">Register</button>
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="newUser.first_name" #firstname="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="newUser.last_name" #lastname="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="phonenumber">Phone Number</label>
+                    <input type="tel" class="form-control" id="phonenumber" name="phonenumber" [(ngModel)]="newUser.phone_number" #phonenumber="ngModel">
+                </div>
+            </div>
+
+
+
+            <div>
+                <button type="submit" (click)="onMakeUser()" [disabled]="(password.invalid || password.untouched) || (username.invalid || username.untouched) || userExists">Register</button>
             </div>
         </form>
     </div>
@@ -26,11 +44,12 @@
         <div [hidden]="username.valid || username.untouched">
             <p>Please enter a username between 4 and 20 characters.</p>
         </div>
-
-        <div [hidden]="userExists">
+    <div [hidden]="username.invalid || username.untouched">
+        <div [hidden]="!userExists">
             <p>Username is taken. Please try another.</p>
         </div>
 
+    </div>
         <div [hidden]="password.valid || password.untouched || username.invalid">
             <p>Please enter a password over 4 characters.</p>
         </div>
