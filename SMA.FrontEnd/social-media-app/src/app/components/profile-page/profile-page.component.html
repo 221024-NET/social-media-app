@@ -1,23 +1,44 @@
-<div [hidden]="editingMode">
-  <h1>Your Profile</h1>
-  <!--to do: add image field in this form and user.ts if there is time-->
-  <div>First Name: {{user.first_name}} | Last Name: {{user.last_name}} | Phone Number: {{user.phone_number}} | Username: {{user.username}}</div>
-  <br />
-  <button (click)="toggleEditingMode()">Update Profile</button>
+<div id="global-container">
+  <div [hidden]="editingMode">
+    <h1>Your Profile</h1>
+    <!--to do: add image field in this form and user.ts if there is time-->
+    <ul class="list-group" >
+      <li class="list-group-item" >Username: {{user.username}}</li>
+      <li class="list-group-item">Phone Number: {{user.phone_number}}</li>
+      <li class="list-group-item">Last Name: {{user.last_name}}</li>
+      <li class="list-group-item">First Name: {{user.first_name}}</li>
+    </ul>
+    <button class="btn btn-primary" (click)="toggleEditingMode()">Update Profile</button>
+  </div>
+
+  <!--Form current logs the inputs into console, need to hook up submitChanges button to PUT user/id service-->
+
+  <form [hidden]="!editingMode" [formGroup] = "formdata" (ngSubmit)="submitChanges(formdata.value)">
+    <h1>Update your profile: </h1>
+    <div id="user-input">
+      <label>First Name: </label>
+      <input type="text" name="firstName" id="firstName" formControlName="firstName" required>
+      <div *ngIf="formdata.controls['firstName'].invalid && (formdata.controls['firstName'].dirty || formdata.controls['firstName'].touched)">
+        <div *ngIf="formdata.controls['firstName'].errors.required">Please enter your first name.</div>
+        </div>
+    </div>
+
+    <div id="user-input">
+      <label>Last Name: </label>
+      <input type="text" name="lastName" id="lastName" formControlName="lastName" required>
+      <div *ngIf="formdata.controls['lastName'].invalid && (formdata.controls['lastName'].dirty || formdata.controls['lastName'].touched)">
+        <div *ngIf="formdata.controls['lastName'].errors.required">Please enter your last name.</div>
+        </div>
+    </div>
+      
+    <div id="user-input">
+      <label>Phone Number: </label>
+      <input type="number" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber" required>
+      <div *ngIf="formdata.controls['phoneNumber'].invalid && (formdata.controls['phoneNumber'].dirty || formdata.controls['phoneNumber'].touched)">
+        <div *ngIf="formdata.controls['phoneNumber'].errors.required">Please enter your phone number.</div>
+        </div>
+    </div>
+      
+    <button value="submit">Submit Changes</button>
+  </form>
 </div>
-
-<!--Form current logs the inputs into console, need to hook up submitChanges button to PUT user/id service-->
-
-<form [hidden]="!editingMode" #profileForm="ngForm" (ngSubmit)="submitChanges(profileForm.value)">
-  <h1>UnHiddened</h1>
-  <label>First Name: </label>
-  <input type="text" ngModel name="firstName" />
-  <br />
-  <label>Last Name: </label>
-  <input type="text" ngModel name="lastName" />
-  <br />
-  <label>Phone Number</label>
-  <input type="number" ngModel name="phoneNumber"/>
-  <br />
-  <button value="submit">Submit Changes</button>
-</form>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../classes/user';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Input } from '@angular/core';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -11,17 +11,20 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./profile-page.component.css', '../../app.component.css']
 })
 export class ProfilePageComponent implements OnInit{
-  profileForm: any;
+  formdata: any;
   editingMode: boolean = false;
   user: User = new User(99, "username", "password", "firstname", "lastname", 100);
-  
-  
   
   constructor(private dataTransfer: DataTransferService, private profileService: ProfileService) {
   }
 
   ngOnInit(): void {
     this.user = this.dataTransfer.getData()
+    this.formdata = new FormGroup({
+      firstName: new FormControl(""),
+      lastName: new FormControl(""),
+      phoneNumber: new FormControl("")
+    });
   }
 
   toggleEditingMode() {
@@ -29,19 +32,27 @@ export class ProfilePageComponent implements OnInit{
   }
 
   submitChanges(data: any) {
-    console.log("Changes submitted");
-    this.user.first_name = data.firstName;
-    this.user.last_name = data.lastName;
-    this.user.phone_number = data.phoneNumber
-    console.warn(data);
-    this.editingMode = false;
-    this.profileService.updateUser(this.user.user_id, this.user).subscribe(
-      response => {
-        console.log(response);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    if(!this.formdata.valid) {
+      this.formdata.markAllAsTouched();
+    }
+    else {
+      console.log("Changes submitted");
+
+      this.user.first_name = data.firstName;
+      this.user.last_name = data.lastName;
+      this.user.phone_number = data.phoneNumber
+
+      console.warn(data);
+      this.editingMode = false;
+
+      this.profileService.updateUser(this.user.user_id, this.user).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 }
