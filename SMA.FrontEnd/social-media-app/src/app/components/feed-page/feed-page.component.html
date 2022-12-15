@@ -1,1 +1,57 @@
-<p>feed-page works!</p>
+
+<div class="column-structure-page">
+    <div id="personal-section" class="column-section">
+        <div class="row">
+            <div id="profile-block" class="column border">
+                <img id="profile-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
+                <div id="profile-header row">
+                    <span>{{user.username}}</span>
+                    <br />
+                    <span>{{user.first_name}}</span>
+                </div>
+            </div>
+            <br />
+            <div id="stretch" class="column border">
+                <div>Stretch goals:</div>
+                <ul>
+                </ul>
+            </div>
+            <div id="goals"  class="column border">
+                <ul>
+                    <li>Notifications</li>
+                    <li>Events Calendar</li>
+                    <li>Join Groups</li>
+                    <li>Chatrooms</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="post-block" class="column-section">
+        <div class="row">
+            <div id="post-block-header" class="border">
+                <p style="text-align:center">Recent posts</p>
+            </div>
+            <div class="border">
+                <app-post-summary></app-post-summary>
+            </div>
+            <br />
+            <div class="border">
+                <app-post-summary></app-post-summary>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="display-block" class="section border">
+        <div class="row">
+            <app-post></app-post>
+        </div>
+    </div>
+</div>
+
+
+
+
+
