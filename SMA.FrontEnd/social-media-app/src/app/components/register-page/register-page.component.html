@@ -45,9 +45,10 @@
             <p>Please enter a username between 4 and 20 characters.</p>
         </div>
 
-        <div [hidden]="!userExists">
-            <p>Username is taken. Please try another.</p>
-        </div>
+        <div [hidden]="username.invalid || username.untouched">
+            <div [hidden]="!userExists">
+                <p>Username is taken. Please try another.</p>
+            </div>
 
         <div [hidden]="password.valid || password.untouched || username.invalid">
             <p>Please enter a password over 4 characters.</p>
