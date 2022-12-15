@@ -1,2 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+    --dark-blue-main: rgb(42, 42, 85);
+    --dark-blue-accent: rgb(65, 65, 94);
+    --light-text: rgb(255, 245, 233);
+    --light-pink: pink;
+    --light-blue: azure;
+}
+
+#global-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    align-items: center;
+    gap: 25px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#user-input {
+    display: flex;
+    flex-direction: column;
+}
+
+#title {
+    text-align: center;
+}
+
+.ng-valid[required], .ng-valid.required {
+    border-bottom: 5px solid green;
+}
+
+.ng-invalid:not(form) {
+    border-bottom: 5px solid red;
+}
+
+body
+{
+    background-color: var(--dark-blue-main);
+    color: var(--light-text);
+    margin: 0%;
+}
+
+a:visited
+{
+    color: var(--light-pink);
+}
