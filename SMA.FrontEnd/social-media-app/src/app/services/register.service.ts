@@ -2,7 +2,6 @@ import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, filter, catchError } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { BaseUser } from '../interfaces/base-user';
 import { User } from '../classes/user';
 
 @Injectable({
@@ -26,13 +25,13 @@ export class RegisterService {
   //        - if matched, create user (POST)
 
 
-  checkUser(user: BaseUser): Observable<boolean> {
+  checkUser(user: User): Observable<boolean> {
     return this.http.post(this.url + "/checkuser", user).pipe(map(res => {if(res) return true; else return false}));
   }
   
 
-  makeUser(user: BaseUser) {
-    this.http.post(this.url, user).subscribe(data => console.log(data));
+  makeUser(user: User) {
+    this.http.post(this.url, user).subscribe(); // data => console.log(data)); // return the user if you want to login right away
   }
 
 }

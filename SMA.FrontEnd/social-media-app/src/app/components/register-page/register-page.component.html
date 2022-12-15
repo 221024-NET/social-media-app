@@ -1,41 +1,40 @@
 <div id="global-container">
     <h1 id = "title">Register Below:</h1>
-    <!--<form>
-        <div id = "user-input">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" [(ngModel)]="username">
+    
+<!-- Main Form -->
+    <div>
+        <form #registerForm="ngForm" name="registration">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required minlength="4" maxLength="20" [(ngModel)]="newUser.username" #username="ngModel" (change)="onSubmit()">
+                
+
+
+                </div>
+            <div class="form-group" [hidden]="!userExists || username.invalid">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" name="password" required minlength="4"  [(ngModel)]="newUser.password" #password="ngModel">
+            </div>
+            <div>
+                <button type="submit" (click)="onMakeUser()" [disabled]="password.invalid || password.untouched">Register</button>
+            </div>
+        </form>
+    </div>
+
+<!-- Validations -->
+    <div>
+        <div [hidden]="username.valid || username.untouched">
+            <p>Please enter a username between 4 and 20 characters.</p>
         </div>
 
-        <div id ="user-input">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" [(ngModel)]="password">
+        <div [hidden]="userExists">
+            <p>Username is taken. Please try another.</p>
         </div>
 
-        <div id ="user-input">
-            <label for="password-confirm">Re-Enter Password</label>
-            <input type="password" name="password-confirm" id="password-confirm">
+        <div [hidden]="password.valid || password.untouched">
+            <p>Please enter a password over 4 characters.</p>
         </div>
-
-        <button type="submit">Register</button>
-     </form>
-    <a id="register" [routerLink]="'/login'">Back to Login</a>
-    -->
-{{isValidUser}}
-
-    <form #registerForm="ngForm">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required [(ngModel)]="newUser.username">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="text" class="form-control" id="password" name="password" required [(ngModel)]="newUser.password">            
-        </div>
-        <button type="submit" (click)="onSubmit()">Submit</button>
-        <button  (click)="onMakeUser()">Register</button>
-
-    </form>
-
+    </div>
 
 </div>
 
