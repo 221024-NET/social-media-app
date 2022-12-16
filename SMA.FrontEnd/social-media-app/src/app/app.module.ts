@@ -13,6 +13,8 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { CommentComponent } from './components/PostComponents/comment/comment.component';
 import { PostComponent } from './components/PostComponents/post/post.component';
 import { PostSummaryComponent } from './components/PostComponents/post-summary/post-summary.component';
+import { LikeComponent } from './components/like/like.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { PostSummaryComponent } from './components/PostComponents/post-summary/p
     LogoutComponent,
     CommentComponent,
     PostComponent,
-    PostSummaryComponent
+    PostSummaryComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { PostSummaryComponent } from './components/PostComponents/post-summary/p
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

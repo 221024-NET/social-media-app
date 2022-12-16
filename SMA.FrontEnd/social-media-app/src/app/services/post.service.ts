@@ -27,4 +27,9 @@ export class PostService {
   public deletePostByID(id: number) {
     return this.http.delete(this.url + "/" + id);
   }
+
+  public getNumberOfLikes(id: number) {
+    let endpoint = "/Posts/getNumberOfLikes/" + id;
+    return this.http.get(this.url + endpoint + id);
+  }
 }
