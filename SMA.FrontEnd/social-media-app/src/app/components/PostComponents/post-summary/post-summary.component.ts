@@ -17,4 +17,5 @@ export class PostSummaryComponent {
     this._selected = selected;
     console.log(selected);
   }
+
 }

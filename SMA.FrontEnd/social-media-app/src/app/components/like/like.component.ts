@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Like } from 'src/app/classes/like';
+import { PostService } from 'src/app/services/post.service';
+import { PostSummaryComponent } from '../PostComponents/post-summary/post-summary.component';
 
 @Component({
   selector: 'app-like',
@@ -8,8 +11,18 @@ import { Component } from '@angular/core';
 export class LikeComponent {
   numberOfLikes = 0;
   likeClicked = false;
+  like = new Like(0, 0, 0);
 
-  constructor() {}
+  @Input()
+  public parentPost(parentPost: PostSummaryComponent) {
+    this.like.post_id = parentPost._selected.post.post_id;
+  }
+
+  constructor(private postService: PostService) {}
+
+  getParentLikes() {
+    
+  }
 
   incrementLike() {
     this.numberOfLikes++;
