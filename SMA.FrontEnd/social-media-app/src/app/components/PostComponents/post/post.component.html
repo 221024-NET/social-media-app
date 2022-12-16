@@ -1,26 +1,20 @@
 
 <div class="post-block">
     <div class="post-header">
-        <img class="post-user-selfie" src={{post.user_selfie}} />
-        <span class="post-user">{{post.username}} posted: </span>
-        <span class="post-date"> on {{post.date}}</span>
+        <!--<img class="post-user-selfie" src={{post.user_selfie}} />-->
+        <span class="post-user">{{post.user_id}} posted: </span>
+        <!--<span class="post-date"> on {{post.date}}</span>-->
     </div>
     <!-- alternatively use an "hours ago" syntax if recent -->
     <img class="post-image" src="https://www.katherineannward.com/Images/25thHour/SwordsBack.png" alt=""/>
-    <div class="post-message">{{post.message}}</div>
+    <div class="post-message">{{post.content}}</div>
     <!--app-post-likes count(user,date)></app-post-likes-->
     <div class="post-likes">
-        <img src="likethumb.png" alt="(^-^)\_b" />
-        <span> {{post.likecount}}</span>
+        <!--<span> {{post.likecount}}</span>-->
+        <button onclick="addlike()">(^-^)\_b</button>
+        <!--img src="likethumb.png" alt="(^-^)\_b" /-->
     </div>
     <div class="post-comment">
-        <app-comment></app-comment>
-        <!-- comment component needed-->
-        <!-- comment component needs recursion -->
-        <app-comment></app-comment>
-        <app-comment></app-comment>
-        <app-comment></app-comment>
-        <app-comment></app-comment>
         <app-comment></app-comment>
         <app-comment></app-comment>
         <app-comment></app-comment>

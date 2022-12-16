@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-//import { map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { PostClass } from 'src/app/classes/post-class';
 
 
@@ -9,27 +9,22 @@ import { PostClass } from 'src/app/classes/post-class';
 })
 export class PostService {
 
-  public url = "";
-  constructor(private http: HttpClient) { 
+  public url = 'https://localhost:7143/api/Posts';
+  constructor(private http: HttpClient) { }
 
-  }
   public makePost(postData: PostClass) {
-    let endpoint = "/posts";
-    return this.http.post(this.url + endpoint, postData);
+    return this.http.post(this.url, postData);
   }
 
   public getAllPosts() {
-    let endpoint = "/posts"
-    return this.http.get(this.url + endpoint);
+    return this.http.get(this.url);
   }
 
   public getPostByID(id: number) {
-    let endpoint = "/posts/"
-    return this.http.get(this.url + endpoint + id);
+    return this.http.get(this.url + "/" + id);
   }
 
   public deletePostByID(id: number) {
-    let endpoint = "/posts/"
-    return this.http.delete(this.url + endpoint + id);
+    return this.http.delete(this.url + "/" + id);
   }
 }

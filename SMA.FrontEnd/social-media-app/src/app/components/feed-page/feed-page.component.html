@@ -4,26 +4,29 @@
         <div class="row">
             <div id="profile-block"  class="column border">
                 <div class="row">
-                    <span>You are logged in as:</span>
+                    <span>Hello:</span>
                     <div class="column">
                         <div>
                             <img id="profile-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
                         </div>
-                        <div id="profile-header row">
-                            <span>{{user.username}}</span>
-                            <br />
-                            <span>{{user.first_name}}</span>
-                        </div>
+                        <span>{{user.username}}</span>
+                        <br />
+                        <span>{{user.first_name}}</span>
                     </div>
                 </div>
             </div>
-            <br />
+            <br /><p> </p>
             <div id="stretch" class="column border">
                 <div>Your friends</div>
                 <ul>
                 </ul>
             </div>
             <div id="goals"  class="column border">
+                <form onsubmit="writePost(newpostmessage)">
+                    <input type="text" message="the message again">
+                    <button type="submit">post</button>
+                </form>
+                
                 <ul>
                     <li>11111111111</li>
                     <li>22222222222</li>
@@ -40,20 +43,33 @@
             <div id="post-block-header" class="border">
                 <p style="text-align:center">Recent posts</p>
             </div>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
+
+            <div class="border">
+                <p>foreach loop</p>
+                <li *ngFor="let post of postset">
+                    <!--app-post-summary [selected]="post"></app-post-summary>-->
+                    <<span>{{post.user.username}} posted:</span>
+                        <span> on{{post.post.date}}</span>
+                        <span>{{post.post.content}}</span>
+                    <!--<div class="row">
+                        <span>{{post.user.username}}</span>
+                        <br />
+                        <span>{{post.post.post_id}} {{post.post.content}}</span>
+                        <img class="post-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
+                        <div class="column">
+                            <span>Likes</span>
+                            <span>Comments</span>
+                        </div>
+                    </div>-->
+                </li>
+            </div>
+
+            <!-- <li *ngFor="let post of posts">
+                <a  href="{{post.path}}">  
+                    <span  style="font-size: 20px;text-align: center;">{{post.title}}                 
+                     </span>
+               </a>
+           </li> -->
         </div>
     </div>
 
