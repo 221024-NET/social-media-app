@@ -15,5 +15,6 @@ export class PostSummaryComponent {
   @Input()
   public set selected(selected: CompiledPost) {
     this._selected = selected;
+    console.log(selected);
   }
 }
