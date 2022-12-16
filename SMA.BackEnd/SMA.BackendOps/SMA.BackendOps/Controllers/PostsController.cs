@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SMA.BackendOps.classes;
 using SMA.BackendOps.Models;
 
 namespace SMA.BackendOps.Controllers
@@ -21,10 +22,19 @@ namespace SMA.BackendOps.Controllers
         }
 
         // GET: api/Posts
+        //This Get method now returns a LIST of UserAndPost objects,which is basically a class with parameters (User user,Post post) 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
+        public async Task<ActionResult<IEnumerable<UserAndPost>>> GetPosts()
         {
-            return await _context.Posts.ToListAsync();
+            var posts = await _context.Posts.ToListAsync();
+            var result = new List<UserAndPost>();
+            foreach (var post in posts)
+            {
+                var user = await _context.Users.FindAsync(post.user_id);
+                var element = new UserAndPost(user, post);
+                result.Add(element);
+            }
+            return result;
         }
 
         // GET: api/Posts/5
@@ -97,6 +107,33 @@ namespace SMA.BackendOps.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        //GET: api/Posts/getParentComments/{post_id} 
+        //gets a list of all parent comments (comments that are not replies) when given a post id, returns nothing if no parent comments
+        [HttpGet("getParentComments/{post_id}")]
+        public async Task<ActionResult<IEnumerable<Comment>>> getParentComments(int post_id)
+        {
+            var parent_comments = await _context.Comments.Where(c => c.post_id == post_id && c.parent_comment_id == null).ToListAsync();
+            return parent_comments;
+        }
+        //GET : api/Posts/getNumberOfLikes/{post_id}
+        //returns an int of how many people liked post with post_id
+        [HttpGet("getNumberOfLikes/{post_id}")]
+        public async Task<ActionResult<int>> getNumberOfLikes(int post_id)
+        {
+            var likes = await _context.Likes.Where(l => l.post_id == post_id).ToListAsync();
+            return likes.Count();
+        }
+
+        [HttpGet("doesUserLikePost/{post_id}/{user_id}")]
+        public async Task<ActionResult<bool>> doesUserLikePost(int post_id,int user_id)
+        {
+            var like = await _context.Likes.Where(l => l.post_id == post_id && l.user_id == user_id).ToListAsync();
+            if (like.Count() > 0)
+                return true;
+
+            return false;
         }
 
         private bool PostExists(int id)
