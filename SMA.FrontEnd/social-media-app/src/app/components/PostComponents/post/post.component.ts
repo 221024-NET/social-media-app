@@ -10,7 +10,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  public post: PostClass = new PostClass(0,0,"msg","Oct","");
+  public post: PostClass = new PostClass(0,0,"post component",new Date(),""); 
 
   constructor(private postalservice: PostService) { }
 

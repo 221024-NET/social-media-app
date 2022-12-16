@@ -7,5 +7,5 @@ import { PostClass } from 'src/app/classes/post-class';
   styleUrls: ['./post-summary.component.css']
 })
 export class PostSummaryComponent {
-  public post: PostClass = new PostClass(0,0,"name","Hello, World!","");
+  public post: PostClass = new PostClass(0,0,"summary post",new Date(),"");
 }
