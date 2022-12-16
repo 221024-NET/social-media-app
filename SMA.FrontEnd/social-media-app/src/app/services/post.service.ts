@@ -32,4 +32,9 @@ export class PostService {
     let endpoint = "/posts/"
     return this.http.delete(this.url + endpoint + id);
   }
+
+  public getNumberOfLikes(id: number) {
+    let endpoint = "/Posts/getNumberOfLikes/" + id;
+    return this.http.get(this.url + endpoint + id);
+  }
 }
