@@ -10,14 +10,14 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  public post: PostClass = new PostClass(0,"name","path","today","Hello, World!","",88);
+  public post: PostClass = new PostClass(0,0,"post component",new Date(),""); 
 
   constructor(private postalservice: PostService) { }
 
   ngOnInit() { }
 
   //@Input()
-  public set ID(id:number) {
-    this.post.postid = id;
-  }
+  // public set ID(id:number) {
+  //   this.post.postid = id;
+  // }
 }
