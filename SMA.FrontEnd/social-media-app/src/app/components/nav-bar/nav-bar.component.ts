@@ -33,39 +33,3 @@ export class NavBarComponent implements OnDestroy {
     this.subscription.unsubscribe();
   }
 }
-
-/*
-user: User;
-  dataTransfer: DataTransferService;
-  dummyUser: User =
-    {
-      user_id: 37,
-      username: "Gummy",
-      password: "Shipz4Lyfe",
-      first_name: "Gummy",
-      last_name: "Ship",
-      phone_number: 5551235467
-    }
-
-  constructor(dt: DataTransferService) {
-    this.dataTransfer = dt;
-    //this.user = this.dataTransfer.getData();
-    if (this.user.user_id > 0) {
-      this.isLoggedIn = true;
-    }
-    else {
-      this.isLoggedIn = false;
-    }
-  }
-
-  ngOnInit() {
-    console.log("OnInit Called")
-    //this.user = this.dataTransfer.getData();
-    if (this.user.user_id > 0) {
-      this.isLoggedIn = true;
-    }
-    else {
-      this.isLoggedIn = false;
-    }
-  }
-  */

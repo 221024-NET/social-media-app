@@ -52,7 +52,7 @@ body
     margin: 0%;
 }
 
-a:visited
+a
 {
     color: var(--light-pink);
 }

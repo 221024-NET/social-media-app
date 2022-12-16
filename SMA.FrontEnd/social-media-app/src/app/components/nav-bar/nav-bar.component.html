@@ -1,32 +1,28 @@
-<!--<div class="navbar" [hidden]="isLoggedIn" (load)="onLoad()">
-    <a [routerLink]="'/login'">Login</a>
-    <p>{{user.user_id}}</p>
-    <p>{{isLoggedIn}}</p>
-    <a [routerLink]="'/register'">Register</a>
-</div>
-
-<div class="navbar" [hidden]="!isLoggedIn" (load)="onLoad()">
-    <a [routerLink]="'/main'">Home</a>
-    <p>{{user.user_id}}</p>
-    <p>{{isLoggedIn}}</p>
-    <a [routerLink]="'/profile'">Profile</a>
-    <app-logout></app-logout>
-</div>-->
-
-
-    <div class="navbar" [hidden]="isLoggedIn">
+    <!-- <div class="navbar" [hidden]="isLoggedIn">
         <a [routerLink]="'/login'">Login</a>
-        <p>{{user.user_id}}</p>
-        <p>{{isLoggedIn}}</p>
         <a [routerLink]="'/register'">Register</a>
-        <a [routerLink]="'/main'">Home</a>
-        <a [routerLink]="'/profile'">Profile</a>
     </div>
     
     <div class="navbar" [hidden]="!isLoggedIn">
         <a [routerLink]="'/main'">Home</a>
-        <p>{{user.user_id}}</p>
-        <p>{{isLoggedIn}}</p>
         <a [routerLink]="'/profile'">Profile</a>
         <app-logout></app-logout>
+    </div> -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" [routerLink]="'/main'">Social Media App</a>
+        </div>
+
+        <ul class="nav" [hidden]="isLoggedIn">
+            <li class="nav-link"><a [routerLink]="'/login'">Login</a></li>
+            <li class="nav-link"><a [routerLink]="'/register'">Register</a></li>
+        </ul>
+
+        <ul class="nav" [hidden]="!isLoggedIn">
+            <li class="nav-link"><a [routerLink]="'/main'">Home</a></li>
+            <li class="nav-link"><a [routerLink]="'/profile'">Profile</a></li>
+            <li class="nav-link"><a><app-logout></app-logout></a></li>
+        </ul>
     </div>
+</nav>
