@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { PostComponent } from './components/PostComponents/post/post.component';
 import { CommentComponent } from './components/PostComponents/comment/comment.component';
 import { PostSummaryComponent } from './components/PostComponents/post-summary/post-summary.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PostSummaryComponent } from './components/PostComponents/post-summary/p
     ProfilePageComponent,
     PostComponent,
     CommentComponent,
-    PostSummaryComponent
+    PostSummaryComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
