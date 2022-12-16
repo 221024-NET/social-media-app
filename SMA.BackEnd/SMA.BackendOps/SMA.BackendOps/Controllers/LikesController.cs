@@ -99,6 +99,8 @@ namespace SMA.BackendOps.Controllers
             return NoContent();
         }
 
+        //DELETE: api/Likes/unLike/2/3
+        //Deletes a like row when given the post_id and user_id, would be called when unliking a post
         [HttpDelete("unLike/{post_id}/{user_id}")]
         public async Task<IActionResult> unLike(int post_id,int user_id)
         {
