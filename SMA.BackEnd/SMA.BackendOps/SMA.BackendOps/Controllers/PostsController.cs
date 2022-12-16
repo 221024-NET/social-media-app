@@ -126,6 +126,16 @@ namespace SMA.BackendOps.Controllers
             return likes.Count();
         }
 
+        [HttpGet("doesUserLikePost/{post_id}/{user_id}")]
+        public async Task<ActionResult<bool>> doesUserLikePost(int post_id,int user_id)
+        {
+            var like = await _context.Likes.Where(l => l.post_id == post_id && l.user_id == user_id).ToListAsync();
+            if (like.Count() > 0)
+                return true;
+
+            return false;
+        }
+
         private bool PostExists(int id)
         {
             return _context.Posts.Any(e => e.post_id == id);
