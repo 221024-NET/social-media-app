@@ -3,12 +3,12 @@ import { PostClass } from "./post-class";
 import { User } from "./user";
 
 export class CompiledPost {
-    author: User;
+    user: User;
     post: PostClass;
 
     constructor(u:User,p:PostClass)
     {
-        this.author = u;
+        this.user = u;
         this.post = p;
     } 
 }
