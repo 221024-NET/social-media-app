@@ -7,14 +7,22 @@ import { Component } from '@angular/core';
 })
 export class LikeComponent {
   numberOfLikes = 0;
+  likeClicked = false;
+  dislikeClicked = false;
 
   constructor() {}
 
   incrementLike() {
     this.numberOfLikes++;
+    this.likeClicked = true;
+    this.dislikeClicked = false;
+    
   }
 
   decrementLike() {
     this.numberOfLikes--;
+    this.dislikeClicked = true;
+    this.likeClicked = false;
+    
   }
 }
