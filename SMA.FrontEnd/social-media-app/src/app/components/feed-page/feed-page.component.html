@@ -4,14 +4,14 @@
         <div class="row">
             <div id="profile-block"  class="column border">
                 <div class="row">
-                    <span>You are logged in as:</span>
+                    <span>Hello:</span>
                     <div class="column">
                         <div>
                             <img id="profile-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
                         </div>
-                            <span>{{user.username}}</span>
-                            <br />
-                            <span>{{user.first_name}}</span>
+                        <span>{{user.username}}</span>
+                        <br />
+                        <span>{{user.first_name}}</span>
                     </div>
                 </div>
             </div>
@@ -47,8 +47,20 @@
             <div class="border">
                 <p>foreach loop</p>
                 <li *ngFor="let post of postset">
-                    <p>looping</p>
-                    <span>{{post.message}}</span>
+                    <!--app-post-summary [selected]="post"></app-post-summary>-->
+                    <<span>{{post.user.username}} posted:</span>
+                        <span> on{{post.post.date}}</span>
+                        <span>{{post.post.content}}</span>
+                    <!--<div class="row">
+                        <span>{{post.user.username}}</span>
+                        <br />
+                        <span>{{post.post.post_id}} {{post.post.content}}</span>
+                        <img class="post-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
+                        <div class="column">
+                            <span>Likes</span>
+                            <span>Comments</span>
+                        </div>
+                    </div>-->
                 </li>
             </div>
 
@@ -58,9 +70,6 @@
                      </span>
                </a>
            </li> -->
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
-            <div class="border"><app-post-summary></app-post-summary></div><br/>
         </div>
     </div>
 

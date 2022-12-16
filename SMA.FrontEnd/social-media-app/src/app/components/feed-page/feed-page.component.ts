@@ -23,15 +23,16 @@ export class FeedPageComponent {
   }
 
   ngOnInit(): void {
-    this.newpost = new FormGroup({
-      themessage: new FormControl(""),
-    });
+    this.postset = this.getAllPosts();
+    // this.newpost = new FormGroup({
+    //   themessage: new FormControl(""),
+    // });
   }
 
   getAllPosts() {
     this.postal.getAllPosts().subscribe(
-      (response) => { this.postset = response; console.log(this.postset) },
-      (error) => { console.log(error); }
+      (response) => { console.log("getAllPosts called"); this.postset = response; },
+      (error) => { console.log("getAllPosts called"); console.log(error); }
     )
   } 
 
