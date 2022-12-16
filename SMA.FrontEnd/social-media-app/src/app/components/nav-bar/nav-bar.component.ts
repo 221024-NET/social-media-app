@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { User } from 'src/app/classes/user';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 
@@ -16,19 +16,18 @@ export class NavBarComponent implements OnDestroy {
   subscription: Subscription;
 
   constructor(private dt: DataTransferService) {
-    this.subscription = dt.getData().subscribe(data => this.user = data);
+    this.subscription = dt.getData()
+      .subscribe(data => {
+        this.user = data;
 
-
-    console.log("navbar called getData");
-    if (this.user.user_id > 0) {
-      this.isLoggedIn = true;
-    }
-    else {
-      this.isLoggedIn = false;
-    }
-
+        if (this.user.user_id > 0) {
+          this.isLoggedIn = true;
+        }
+        else {
+          this.isLoggedIn = false;
+        }
+      });
   }
-
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

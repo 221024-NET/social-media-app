@@ -18,12 +18,14 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(private dataTransfer: DataTransferService, private profileService: ProfileService) {
-    this.subscription = this.dataTransfer.getData().subscribe(data => { this.user = data });
-    console.log(this.user.user_id + " From the profile page");
+    this.subscription = this.dataTransfer.getData().subscribe(data => {
+      this.user = data
+      console.log('profile user updated to', this.user);
+    });
   }
 
   ngOnInit(): void {
-    //this.user = this.dataTransfer.getData()
+    this.user = this.dataTransfer.findUser();
     this.formdata = new FormGroup({
       firstName: new FormControl(""),
       lastName: new FormControl(""),

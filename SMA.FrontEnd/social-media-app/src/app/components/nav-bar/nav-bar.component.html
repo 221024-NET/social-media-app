@@ -19,6 +19,8 @@
         <p>{{user.user_id}}</p>
         <p>{{isLoggedIn}}</p>
         <a [routerLink]="'/register'">Register</a>
+        <a [routerLink]="'/main'">Home</a>
+        <a [routerLink]="'/profile'">Profile</a>
     </div>
     
     <div class="navbar" [hidden]="!isLoggedIn">
