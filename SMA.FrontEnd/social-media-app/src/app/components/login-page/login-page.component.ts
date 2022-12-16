@@ -1,9 +1,15 @@
-import { Component, OnInit, resolveForwardRef } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, resolveForwardRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
 import { FormControl } from '@angular/forms';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { Injectable } from '@angular/core';
+import { DataTransferService } from 'src/app/services/data-transfer.service';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-login-page',
@@ -15,10 +21,13 @@ export class LoginPageComponent implements OnInit {
   formdata: any;
   submitted = false;
   formUser: User = new User(0, "", "");
-  loggedInUser: any;
+  logInResponse: any;
+  currentUser: User = new User(0, "", "");
   errorMessage = "";
 
-  constructor(private loginService : LoginServiceService) { }
+  constructor(private loginService : LoginServiceService, private router: Router, private dataTransfer: DataTransferService ) { }
+
+  @Output() login = new EventEmitter<User>();
 
   ngOnInit(): void {
     this.formdata = new FormGroup({
@@ -44,7 +53,20 @@ export class LoginPageComponent implements OnInit {
       this.loginService.login(this.formUser).subscribe(
         response => {
           this.errorMessage = "";
-          this.loggedInUser = response;
+          this.logInResponse = response;
+
+          this.currentUser.user_id = this.logInResponse.user_id;
+          this.currentUser.username = this.logInResponse.username;
+          this.currentUser.password = this.logInResponse.password;
+          this.currentUser.first_name = this.logInResponse.first_name;
+          this.currentUser.last_name = this.logInResponse.last_name;
+          this.currentUser.phone_number = this.logInResponse.phone_number;
+
+          //this.login.emit(this.currentUser);
+          this.dataTransfer.setData(this.currentUser);
+
+
+          this.router.navigateByUrl('/profile');
           //console.log(this.loggedInUser);
         },
         error => {
