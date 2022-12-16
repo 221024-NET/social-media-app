@@ -99,6 +99,15 @@ namespace SMA.BackendOps.Controllers
             return NoContent();
         }
 
+        //returns a LIST of replies to a comment when passed a comment_id, if no replies then returns nothing
+        //GET: api/Comments/replies/2
+        [HttpGet("replies/{id}")]
+        public async Task<ActionResult<IEnumerable<Comment>>> GetReplies(int id)
+        {
+            var replies = await _context.Comments.Where(r => r.parent_comment_id == id).ToListAsync();
+            return replies;
+        }
+
         private bool CommentExists(int id)
         {
             return _context.Comments.Any(e => e.comment_id == id);
