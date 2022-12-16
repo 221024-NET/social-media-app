@@ -45,31 +45,14 @@
             </div>
 
             <div class="border">
-                <p>foreach loop</p>
-                <li *ngFor="let post of postset">
-                    <!--app-post-summary [selected]="post"></app-post-summary>-->
-                    <<span>{{post.user.username}} posted:</span>
+                <div *ngFor="let post of postset.reverse()">
+                    <app-post-summary [selected]="post"></app-post-summary>
+                    <!--<span>{{post.user.username}} posted:</span>
                         <span> on{{post.post.date}}</span>
-                        <span>{{post.post.content}}</span>
-                    <!--<div class="row">
-                        <span>{{post.user.username}}</span>
+                        <span>{{post.post.content}}</span>-->
                         <br />
-                        <span>{{post.post.post_id}} {{post.post.content}}</span>
-                        <img class="post-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
-                        <div class="column">
-                            <span>Likes</span>
-                            <span>Comments</span>
-                        </div>
-                    </div>-->
-                </li>
+                </div>
             </div>
-
-            <!-- <li *ngFor="let post of posts">
-                <a  href="{{post.path}}">  
-                    <span  style="font-size: 20px;text-align: center;">{{post.title}}                 
-                     </span>
-               </a>
-           </li> -->
         </div>
     </div>
 
