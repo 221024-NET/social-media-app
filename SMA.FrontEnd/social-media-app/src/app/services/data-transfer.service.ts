@@ -18,7 +18,6 @@ export class DataTransferService {
   }
   
   getData() {
-    console.log(this.user);
     return this.user;
   }
 }

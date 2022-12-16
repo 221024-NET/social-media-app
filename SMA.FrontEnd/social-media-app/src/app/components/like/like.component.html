@@ -1,0 +1,7 @@
+<div>
+    Likes: {{numberOfLikes}}
+    <mat-button-toggle-group name="like">
+        <mat-button-toggle id="like" (click)="incrementLike()">Like</mat-button-toggle>
+        <mat-button-toggle id="dislike" (click)="decrementLike()">Dislike</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
