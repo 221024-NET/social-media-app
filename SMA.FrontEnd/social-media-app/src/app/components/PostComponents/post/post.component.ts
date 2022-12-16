@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 //import { CommentComponent } from './components/comment/comment.component'; // already imported globally
 import { PostClass } from 'src/app/classes/post-class';
 import { PostService } from 'src/app/services/post.service';
+import { CompiledPost } from 'src/app/classes/compiled-post';
+import { User } from 'src/app/classes/user';
 
 
 @Component({
@@ -10,14 +12,19 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  public post: PostClass = new PostClass(0,0,"post component",new Date(),""); 
+  public _selected: CompiledPost = new CompiledPost(new User(0,"0u",""), new PostClass(0,0,"0msg",new Date(),""));
+  pd: Date = new Date();
+  toplevelcomments: any;
 
-  constructor(private postalservice: PostService) { }
+  ngOnInit(): void {
+    //this.toplevelcomments = this.getAllXsComments();
+  }
 
-  ngOnInit() { }
-
-  //@Input()
-  // public set ID(id:number) {
-  //   this.post.postid = id;
-  // }
+  @Input()
+  public set selected(selected: CompiledPost) {
+    console.log(selected);
+    this._selected = selected;
+    this.pd = selected.post.date;
+    //selected.post.date. - this.timenow;
+  }
 }

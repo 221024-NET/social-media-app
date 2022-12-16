@@ -11,7 +11,6 @@ export class PostClass {
         this.date = d;
         this.content = m;
         this.image = img;
-        //this.likecount = l;
     }
 
     timeNow() { this.date = new Date(); }

@@ -1,4 +1,5 @@
 .post-block {
+    margin:2%;
     border:2px;
     background-color: aquamarine;
     border-style:groove;
@@ -7,8 +8,7 @@
 
 .post-header {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     margin: 10px;
 }
 
@@ -22,8 +22,7 @@
 }
 
 .post-date {
-    color: lightgray;
-    text-align: right;
+    color: gray;
 }
 
 .post-image {
@@ -42,6 +41,6 @@
     border-color: black;
 }
 
-.post-comment {
+.post-comments {
     margin:1%;
 }
