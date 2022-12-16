@@ -25,7 +25,7 @@ export class LoginPageComponent implements OnInit {
   currentUser: User = new User(0, "", "");
   errorMessage = "";
 
-  constructor(private loginService : LoginServiceService, private router: Router, private dataTransfer: DataTransferService ) { }
+  constructor(private loginService: LoginServiceService, private router: Router, private dataTransfer: DataTransferService) { }
 
   @Output() login = new EventEmitter<User>();
 
@@ -42,14 +42,14 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit(data: any) {
     this.submitted = true;
-    if(!this.formdata.valid) {
+    if (!this.formdata.valid) {
       this.formdata.markAllAsTouched();
     }
     else {
 
       this.formUser.username = data.username;
       this.formUser.password = data.password;
-  
+
       this.loginService.login(this.formUser).subscribe(
         response => {
           this.errorMessage = "";
@@ -64,9 +64,10 @@ export class LoginPageComponent implements OnInit {
 
           //this.login.emit(this.currentUser);
           this.dataTransfer.setData(this.currentUser);
+          console.log('setData for ' + this.currentUser.user_id);
 
 
-          this.router.navigateByUrl('/profile');
+          this.router.navigateByUrl('/main');
           //console.log(this.loggedInUser);
         },
         error => {
@@ -79,8 +80,8 @@ export class LoginPageComponent implements OnInit {
 
   }
 
-  
 
-  
+
+
 
 }

@@ -1,25 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../../classes/user';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Input } from '@angular/core';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css', '../../app.component.css']
 })
-export class ProfilePageComponent implements OnInit{
+export class ProfilePageComponent implements OnInit, OnDestroy {
   formdata: any;
   editingMode: boolean = false;
-  user: User = new User(99, "username", "password", "firstname", "lastname", 100);
-  
+  user: User = new User(0, '', '');
+  subscription: Subscription;
+
   constructor(private dataTransfer: DataTransferService, private profileService: ProfileService) {
+    this.subscription = this.dataTransfer.getData().subscribe(data => {
+      this.user = data
+      console.log('profile user updated to', this.user);
+    });
   }
 
   ngOnInit(): void {
-    this.user = this.dataTransfer.getData()
+    this.user = this.dataTransfer.findUser();
     this.formdata = new FormGroup({
       firstName: new FormControl(""),
       lastName: new FormControl(""),
@@ -32,7 +38,7 @@ export class ProfilePageComponent implements OnInit{
   }
 
   submitChanges(data: any) {
-    if(!this.formdata.valid) {
+    if (!this.formdata.valid) {
       this.formdata.markAllAsTouched();
     }
     else {
@@ -55,4 +61,9 @@ export class ProfilePageComponent implements OnInit{
       );
     }
   }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
 }

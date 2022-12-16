@@ -13,6 +13,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { CommentComponent } from './components/PostComponents/comment/comment.component';
 import { PostComponent } from './components/PostComponents/post/post.component';
 import { PostSummaryComponent } from './components/PostComponents/post-summary/post-summary.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LikeComponent } from './components/like/like.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
@@ -25,9 +26,10 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ProfilePageComponent,
     LogoutComponent,
     CommentComponent,
-    PostComponent,
     PostSummaryComponent,
-    LikeComponent
+    PostComponent,
+    LikeComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
