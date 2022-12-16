@@ -99,6 +99,18 @@ namespace SMA.BackendOps.Controllers
             return NoContent();
         }
 
+        [HttpDelete("unLike/{post_id}/{user_id}")]
+        public async Task<IActionResult> unLike(int post_id,int user_id)
+        {
+            var like = await _context.Likes.Where(l => l.post_id == post_id && l.user_id == user_id).FirstOrDefaultAsync();
+            if (like == null)
+            {
+                return NotFound();
+            }
+            _context.Likes.Remove(like);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
         private bool LikeExists(int id)
         {
             return _context.Likes.Any(e => e.like_id == id);
