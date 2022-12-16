@@ -9,8 +9,9 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { FeedPageComponent } from './components/feed-page/feed-page.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { PostComponent } from './components/PostComponents/post/post.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { CommentComponent } from './components/PostComponents/comment/comment.component';
+import { PostComponent } from './components/PostComponents/post/post.component';
 import { PostSummaryComponent } from './components/PostComponents/post-summary/post-summary.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
@@ -21,10 +22,11 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     RegisterPageComponent,
     FeedPageComponent,
     ProfilePageComponent,
-    PostComponent,
+    LogoutComponent,
     CommentComponent,
     PostSummaryComponent,
-    NavBarComponent
+    NavBarComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
