@@ -14,6 +14,8 @@ import { CommentComponent } from './components/PostComponents/comment/comment.co
 import { PostComponent } from './components/PostComponents/post/post.component';
 import { PostSummaryComponent } from './components/PostComponents/post-summary/post-summary.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { LikeComponent } from './components/like/like.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     LogoutComponent,
     CommentComponent,
     PostSummaryComponent,
-    NavBarComponent,
-    PostComponent
+    PostComponent,
+    LikeComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

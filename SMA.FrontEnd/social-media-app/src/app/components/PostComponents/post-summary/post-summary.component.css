@@ -1,5 +1,7 @@
 #post-sum-unit {
     display: flex;
+    background-color: beige;
+    color: blue;
 }
 
 #post-sum-header {}

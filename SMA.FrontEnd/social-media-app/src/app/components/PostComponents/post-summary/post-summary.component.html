@@ -1,18 +1,19 @@
 <div id="post-sum-unit">
     <div class="row">
-        <div class="column">
-            <span>User</span>
-            <span>Username</span>
+        <div id="post-sum-header" class="column">
+            <span>@{{_selected.user.username}} posted </span>
+            <span> on {{_selected.post.date}}</span>
         </div>
 
         <div>
-            <p>This is a message to my people</p>
-            <img class="post-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
+            <span>{{_selected.post.content}}</span>
+            <br />
+            <img class="post-img" src={{_selected.post.image}} />
         </div>
 
         <div class="column">
-            <span>Likes</span>
-            <span>Comments</span>
+            <span>Likes#  </span>
+            <span>Comments#  </span>
         </div>
     </div>
 </div>
