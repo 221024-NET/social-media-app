@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommentClass } from 'src/app/classes/comment-class';
 
 @Component({
   selector: 'app-comment',
@@ -6,8 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent {
-  user = "kat";
-  user_selfie = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
-  message = "symmetrical symmetry";
-  date = "Nov 1, 2021";
+  private user_selfie: string = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
+  com: CommentClass = new CommentClass(1, "uusseerrnnaammee", this.user_selfie, "Nov 1, 2021", "symmetrical symmetry");
 }
