@@ -99,6 +99,23 @@ namespace SMA.BackendOps.Controllers
             return NoContent();
         }
 
+        //GET: api/Posts/getParentComments/{post_id} 
+        //gets a list of all parent comments (comments that are not replies) when given a post id, returns nothing if no parent comments
+        [HttpGet("getParentComments/{post_id}")]
+        public async Task<ActionResult<IEnumerable<Comment>>> getParentComments(int post_id)
+        {
+            var parent_comments = await _context.Comments.Where(c => c.post_id == post_id && c.parent_comment_id == null).ToListAsync();
+            return parent_comments;
+        }
+        //GET : api/Posts/getNumberOfLikes/{post_id}
+        //returns an int of how many people liked post with post_id
+        [HttpGet("getNumberOfLikes/{post_id}")]
+        public async Task<ActionResult<int>> getNumberOfLikes(int post_id)
+        {
+            var likes = await _context.Likes.Where(l => l.post_id == post_id).ToListAsync();
+            return likes.Count();
+        }
+
         private bool PostExists(int id)
         {
             return _context.Posts.Any(e => e.post_id == id);
