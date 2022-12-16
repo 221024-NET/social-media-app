@@ -14,13 +14,10 @@ export class LikeComponent {
   incrementLike() {
     this.numberOfLikes++;
     this.likeClicked = true;
-    
-    
   }
 
   decrementLike() {
     this.numberOfLikes--;
     this.likeClicked = false;
-    
   }
 }
