@@ -12,16 +12,29 @@ export class LikeComponent {
   numberOfLikes = 0;
   likeClicked = false;
   like = new Like(0, 0, 0);
+  // parentPostID = 0;
+  // loggedInUserID = 0;
+  
+  
 
-  @Input()
-  public parentPost(parentPost: PostSummaryComponent) {
-    this.like.post_id = parentPost._selected.post.post_id;
+
+  @Input() parentPostID: number = 0; 
+  @Input() loggedInUserID: number = 0;
+
+  // @Input() stuff(parentPostID: number, loggedInUserID: number) {
+  //   this.parentPostID = parentPostID;
+  //   this.loggedInUserID = loggedInUserID;
+  // }
+  
+  
+  
+  constructor(private postService: PostService) {
   }
 
-  constructor(private postService: PostService) {}
+  
 
   getParentLikes() {
-    
+
   }
 
   incrementLike() {

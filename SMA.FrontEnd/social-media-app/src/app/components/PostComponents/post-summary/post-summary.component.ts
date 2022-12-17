@@ -18,4 +18,8 @@ export class PostSummaryComponent {
     console.log(selected);
   }
 
+  constructor() {
+    console.log("current logged in user id: " + this._selected.user.user_id);
+  }
+
 }
