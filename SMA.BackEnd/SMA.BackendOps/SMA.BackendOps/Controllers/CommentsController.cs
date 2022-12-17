@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SMA.BackendOps.classes;
 using SMA.BackendOps.Models;
 
 namespace SMA.BackendOps.Controllers
@@ -22,13 +23,27 @@ namespace SMA.BackendOps.Controllers
 
         // GET: api/Comments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetComments()
+        public async Task<ActionResult<IEnumerable<UserAndComment>>> GetComments()
         {
-            return await _context.Comments.ToListAsync();
+            var comments = await _context.Comments.ToListAsync();
+            var result = new List<UserAndComment>();
+            foreach (var comment in comments)
+            {
+                var user = await _context.Users.FindAsync(comment.user_id);
+                var element = new UserAndComment(user, comment);
+                result.Add(element);
+            }
+            //Console.WriteLine("GetComments done");
+            return result;
         }
 
-        // GET: api/Comments/5
-        [HttpGet("{id}")]
+
+
+
+
+
+// GET: api/Comments/5
+[HttpGet("{id}")]
         public async Task<ActionResult<Comment>> GetComment(int id)
         {
             var comment = await _context.Comments.FindAsync(id);

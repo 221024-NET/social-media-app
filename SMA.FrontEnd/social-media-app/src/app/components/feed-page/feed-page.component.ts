@@ -14,7 +14,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 export class FeedPageComponent {
   user = new User(1, "namename", "passpass","firstfirst","lastlast",1234567890);
-  selected?: CompiledPost;
+  selected: CompiledPost = new CompiledPost(this.user,new PostClass(-1,0,"",new Date(),""));
   postset: any;
   newpost: any;
 
@@ -29,6 +29,10 @@ export class FeedPageComponent {
     // });
   }
 
+  loadpost(post: CompiledPost) {
+    this.selected = post;
+  }
+  
   getAllPosts() {
     this.postal.getAllPosts().subscribe(
       (response) => { console.log("getAllPosts called"); this.postset = response; },

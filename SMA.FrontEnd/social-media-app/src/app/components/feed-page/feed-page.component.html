@@ -46,11 +46,10 @@
 
             <div class="border">
                 <div *ngFor="let post of postset.reverse()">
-                    <app-post-summary [selected]="post"></app-post-summary>
-                    <!--<span>{{post.user.username}} posted:</span>
-                        <span> on{{post.post.date}}</span>
-                        <span>{{post.post.content}}</span>-->
-                        <br />
+                    <div (click)="loadpost(post);">
+                        <app-post-summary [selected]="post"></app-post-summary>
+                    </div>
+                    <br />
                 </div>
             </div>
         </div>
@@ -59,7 +58,7 @@
 
     <div id="display-block" class="column-section border">
         <div class="row">
-            <app-post></app-post>
+            <app-post [selected]="selected"></app-post>
         </div>
     </div>
 </div>

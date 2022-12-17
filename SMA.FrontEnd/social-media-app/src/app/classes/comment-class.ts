@@ -1,15 +1,16 @@
 export class CommentClass {
-    postid: number = 0;
-    username: string = "Another User";
-    user_selfie: string = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
-    date: string = "Nov 1, 1011";
-    message: string = "this message";
+    comment_id: number;
+    comment: string;
+    user_id: number;
+    post_id: number;
+    parent_comment_id? : number;
 
-    constructor(id:number, un:string, upic:string, d:string, m:string) {
-        this.postid = id;
-        this.username = un;
-        this.user_selfie = upic;
-        this.date = d;
-        this.message = m;
+    constructor(cid:number,c:string,uid:number,pid:number,parcid:number)
+    {
+        this.comment_id = cid;
+        this.comment = c;
+        this.user_id = uid;
+        this.post_id = pid;
+        this.parent_comment_id = parcid;
     }
 }
