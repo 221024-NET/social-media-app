@@ -4,6 +4,8 @@ import { PostClass } from 'src/app/classes/post-class';
 import { PostService } from 'src/app/services/post.service';
 import { CompiledPost } from 'src/app/classes/compiled-post';
 import { User } from 'src/app/classes/user';
+import { CommentService } from 'src/app/services/comment.service';
+import { DataTransferService } from 'src/app/services/data-transfer.service';
 
 
 @Component({
@@ -12,19 +14,31 @@ import { User } from 'src/app/classes/user';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  public _selected: CompiledPost = new CompiledPost(new User(0,"0u",""), new PostClass(0,0,"0msg",new Date(),""));
+  user = new User(0,"0u","");
+  public _selected: CompiledPost = new CompiledPost(this.user, new PostClass(0,0,"0msg",new Date(),""));
   pd: Date = new Date();
   toplevelcomments: any;
 
+  constructor(private commental:CommentService, user:DataTransferService) {
+    //this.user = user.getData();
+  }
+
   ngOnInit(): void {
-    //this.toplevelcomments = this.getAllXsComments();
+    this.toplevelcomments = this.getAllComments();
+    console.log(this.toplevelcomments);
   }
 
   @Input()
   public set selected(selected: CompiledPost) {
-    console.log(selected);
+    //console.log(selected);
     this._selected = selected;
     this.pd = selected.post.date;
-    //selected.post.date. - this.timenow;
   }
+
+  getAllComments() {
+    this.commental.getAllComments().subscribe(
+      (response) => { console.log("getAllComments called"); this.toplevelcomments = response; },
+      (error) => { console.log("getAllPosts called"); console.log(error); }
+    )
+  } 
 }
