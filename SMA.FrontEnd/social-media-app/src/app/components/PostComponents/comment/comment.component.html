@@ -6,7 +6,8 @@
         <div class="comment-message">{{_com.comment.comment}}</div>
 
         <div class="comment-replies">
-            <app-reply [replies]="replies"></app-reply>
+          <app-reply [replies]="replies"></app-reply>
+          <app-post-reply [comment_id]="_com.comment.comment_id" [post_id]="_com.comment.post_id"></app-post-reply>
         </div>
     </div>
 </div>

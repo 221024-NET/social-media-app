@@ -6,43 +6,35 @@ import { User } from 'src/app/classes/user';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 
 @Component({
-  selector: 'app-post-comment',
-  templateUrl: './post-comment.component.html',
-  styleUrls: ['./post-comment.component.css']
+  selector: 'app-post-reply',
+  templateUrl: './post-reply.component.html',
+  styleUrls: ['./post-reply.component.css']
 })
-export class PostCommentComponent {
+export class PostReplyComponent {
   user = new User(0, "", "");
-  
-  model = new CommentClass(0, "", 0, 0);
-  
- 
-  @Input() post_id: number = 0;
 
-  
+  model = new CommentClass(0, "", 0, 0,0);
+
+  @Input() post_id: number = 0;
+  @Input() comment_id: number = 0;
 
   constructor(private commental: CommentService, private use: DataTransferService) {
     this.user = use.findUser();
   }
 
-
-  postAComment(form: NgForm) {
+  postAReply(form: NgForm) {
     this.model.comment = form.value.comment;
-    console.log(this.model.comment);
+    console.log( "comment: "+this.model.comment);
     this.model.post_id = this.post_id;
-    console.log(this.model.post_id);
+    console.log("post id: "+this.model.post_id);
     this.model.user_id = this.user.user_id
-    console.log(this.model.user_id);
+    console.log("user id: "+this.model.user_id);
+    this.model.parent_comment_id = this.comment_id;
+    console.log("parent comment id: "+this.model.parent_comment_id);
     this.commental.makePost(this.model).subscribe(
       (response) => { console.log("making a comment") },
       (error) => { console.log(error); }
-    );
-  }
+    );  
 
-
-  /*
-  postAComment(comment: CommentClass) {
-    //this.commental.makePost(comment);
-    console.log("Comment posted");
-    */
-  }
-
+  } 
+}

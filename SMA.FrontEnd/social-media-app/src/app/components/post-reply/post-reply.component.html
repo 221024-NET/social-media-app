@@ -1,0 +1,8 @@
+
+<div>
+  <h4>Post a Reply</h4>
+  <form (ngSubmit)="postAReply(replyForm)" #replyForm="ngForm">
+    <input name="comment" type="text" ngModel />
+    <button type="submit">Post Reply</button>
+  </form>
+</div>
