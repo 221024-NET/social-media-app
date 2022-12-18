@@ -20,7 +20,6 @@ export class LikeComponent implements OnInit {
   
   constructor(private postService: PostService, private dataTransfer: DataTransferService, private likeService: LikeService) {
     this.loggedInUserID = dataTransfer.findUser().user_id;
-    
   }
 
   ngOnInit(): void {

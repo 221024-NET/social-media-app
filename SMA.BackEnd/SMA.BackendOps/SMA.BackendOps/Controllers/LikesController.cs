@@ -77,10 +77,20 @@ namespace SMA.BackendOps.Controllers
         [HttpPost]
         public async Task<ActionResult<Like>> PostLike(Like like)
         {
-            _context.Likes.Add(like);
-            await _context.SaveChangesAsync();
+            var likes = await _context.Likes.Where(l => l.post_id == like.post_id && l.user_id == like.user_id).ToListAsync();
 
-            return CreatedAtAction("GetLike", new { id = like.like_id }, like);
+            if(likes.Count() == 0)
+            {
+                _context.Likes.Add(like);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetLike", new { id = like.like_id }, like);
+            }
+            else
+            {
+                return NoContent();
+            }
+
         }
 
         // DELETE: api/Likes/5
