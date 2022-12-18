@@ -13,13 +13,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 
 export class FeedPageComponent {
-  user = new User(1, "namename", "passpass","firstfirst","lastlast",1234567890);
-  selected: CompiledPost = new CompiledPost(this.user,new PostClass(-1,0,"",new Date(),""));
-  postset: any;
-  newpost: any;
 
-  constructor(private postal:PostService, user:DataTransferService) {
-    //this.user = user.getData();
+  user = new User(0, '', '');
+  selected: CompiledPost = new CompiledPost(this.user,new PostClass(-1,0,"",new Date(),""));
+  
+  postset: any;
+
+  //pid:number, uid:number, m:string, d:Date, img:string
+  postContent: any;
+  postImage: any;
+  postUrl: any;
+
+  constructor(private postal: PostService, dt: DataTransferService) {
+    this.user = new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
   }
 
   ngOnInit(): void {
@@ -35,21 +41,42 @@ export class FeedPageComponent {
   
   getAllPosts() {
     this.postal.getAllPosts().subscribe(
-      (response) => { console.log("getAllPosts called"); this.postset = response; },
-      (error) => { console.log("getAllPosts called"); console.log(error); }
+      (response) => { this.postset = response; },
+      (error) => { console.log(error); }
     )
-  } 
+  }
 
-  // writePost(message: string) {
-  //   const today = new Date();
-  //   const fresh = new PostClass(0,1,this.newpost,today,"");
-  //   this.postal.makePost(fresh).subscribe(
-  //     (response) => {console.log(response); },
-  //     (error) => {console.log(error); }
-  //   )
-  // }
+  onImgLoad(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = e => {
 
-  // getAllFriendsPosts() {
-  //   this.postal.
-  // }
+      let base64String = reader.result?.toString();
+      let base64Index;
+      if (base64String) {
+        base64Index = base64String.indexOf(',') + 1;
+      }
+      else { base64Index = 0; }
+
+      this.postUrl = reader.result?.slice(base64Index);
+    }
+  }
+
+
+  createPost() {
+
+    console.log('----------POSTURL----------', this.postUrl);
+    const timeNow = new Date();
+    const postForm = new FormData();
+    postForm.append('user_id', this.user.user_id.toString());
+    postForm.append('content', this.postContent);
+    postForm.append('date', timeNow.toDateString());
+    postForm.append('image', this.postUrl);
+
+    console.log(postForm);
+
+    this.postal.makePost(postForm).subscribe();
+  }
+
 }

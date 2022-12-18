@@ -22,7 +22,7 @@ export class NavBarComponent implements OnDestroy {
         this.user = data;
         if (this.user.user_id > 0) {
           this.isLoggedIn = true;
-          console.log(this.isLoggedIn);
+          console.log("logged in");
         }
         else {
           this.isLoggedIn = false;

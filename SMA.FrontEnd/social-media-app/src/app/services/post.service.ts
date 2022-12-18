@@ -12,7 +12,7 @@ export class PostService {
   public url = 'https://localhost:7143/api/Posts';
   constructor(private http: HttpClient) { }
 
-  public makePost(postData: PostClass) {
+  public makePost(postData: FormData) {
     return this.http.post(this.url, postData);
   }
 

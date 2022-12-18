@@ -85,8 +85,11 @@ namespace SMA.BackendOps.Controllers
         // POST: api/Posts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Post>> PostPost(Post post)
+        public async Task<ActionResult<Post>> PostPost([FromForm]Post post)
         {
+            //byte[] image = Convert.FromBase64String(post.image);
+            //post.image = image;
+
             _context.Posts.Add(post);
             await _context.SaveChangesAsync();
 
