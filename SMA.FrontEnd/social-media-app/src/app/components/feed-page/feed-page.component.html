@@ -15,17 +15,25 @@
                     </div>
                 </div>
             </div>
-            <br /><p> </p>
-            <div id="stretch" class="column border">
-                <div>Your friends</div>
-                <ul>
-                </ul>
+
+            <br /><br />
+
+            <div id="list-users-section" class="column border">
+                <span>Find people you know</span>
+                <div id="list-users">
+                    <div *ngFor="let p of people">
+                        <app-quick-user [person]="p"></app-quick-user>
+                    </div>
+                </div>
             </div>
             <div id="goals"  class="column border">
-                <form #postForm="ngForm" name="post" [hidden]="user.user_id <= 0">
+                <form [formGroup]="formdata" #postForm="ngForm" name="post" [hidden]="user.user_id <= 0">
                     <div class="form-group">
                         <label for="post-text">Text:</label>
-                        <input type="text" class="form-control" id="post-text" name="post-text" [(ngModel)]="postContent">
+                        <input type="text" class="form-control" id="post-text" name="post-text" [(ngModel)]="postContent" formControlName="postText" required>
+                        <div *ngIf="formdata.controls['postText'].invalid && (formdata.controls['postText'].dirty || formdata.controls['postText'].touched)">
+                            <div *ngIf="formdata.controls['postText'].errors.required">Please enter post text.</div>
+                            </div>
                         <label for="post-image">Image:</label>
                         <input type="file" class="form-control" id="post-image" name="post-image" (change)="onImgLoad($event)">
                         <br/>
@@ -42,9 +50,8 @@
             <div id="post-block-header" class="border">
                 <p style="text-align:center">Recent posts</p>
             </div>
-
-            <div class="border">
-                <div *ngFor="let post of postset;">
+            <div id="post-all" class="border">
+                <div *ngFor="let post of postset.reverse()">
                     <div (click)="loadpost(post);">
                         <app-post-summary [selected]="post"></app-post-summary>
                     </div>
@@ -55,8 +62,8 @@
     </div>
 
 
-    <div id="display-block" class="column-section border full-page" >
-        <div class="row">
+    <div id="display-block" class="column-section border full-page">
+        <div class="row" [hidden]="selected.user.user_id==0">
             <app-post [selected]="selected"></app-post>
         </div>
     </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { mixinInitialized } from '@angular/material/core';
 import { Like } from 'src/app/classes/like';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 import { LikeService } from 'src/app/services/like.service';
@@ -15,16 +16,27 @@ export class LikeComponent implements OnInit {
   likeClicked = false;
   like = new Like(0, 0, 0);
   loggedInUserID = 0;
+  _parentPostID: number = 0;
   
-  @Input() parentPostID: number = 0; 
+  // @Input() parentPostID: number = 0; 
+  @Input() public set parentPostID(parentPostID: number) {
+    this._parentPostID = parentPostID;
+    this.getParentLikes();
+    this.checkIfLiked();
+  }
+
+  public get parentPostID() {
+    return this._parentPostID;
+  }
+
   
   constructor(private postService: PostService, private dataTransfer: DataTransferService, private likeService: LikeService) {
     this.loggedInUserID = dataTransfer.findUser().user_id;
   }
 
   ngOnInit(): void {
-    this.getParentLikes();
-    this.checkIfLiked();
+    // this.getParentLikes();
+    // this.checkIfLiked();
   }
 
   getParentLikes() {

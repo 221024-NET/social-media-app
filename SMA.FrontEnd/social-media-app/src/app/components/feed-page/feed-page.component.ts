@@ -5,7 +5,7 @@ import { CompiledPost } from 'src/app/classes/compiled-post';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 import { PostService } from 'src/app/services/post.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { lastValueFrom } from 'rxjs';
+import { UserListService } from 'src/app/services/user-list.service';
 
 @Component({
   selector: 'app-feed-page',
@@ -19,20 +19,26 @@ export class FeedPageComponent {
   selected: CompiledPost = new CompiledPost(this.user, new PostClass(-1, 0, "", new Date(), ""));
 
   postset: any;
+  people: any;
 
   //pid:number, uid:number, m:string, d:Date, img:string
   postContent: any;
   postUrl: any = null;
+  formdata: any;
 
-  constructor(private postal: PostService, dt: DataTransferService) {
-    this.user = dt.findUser();//new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
+  constructor(private postal: PostService, private useral:UserListService, dt: DataTransferService) {
+    this.user = dt.findUser();
     this.postset = this.getAllPosts();
   }
 
   ngOnInit(): void {
+    this.getAllUsers();
     // this.newpost = new FormGroup({
     //   themessage: new FormControl(""),
     // });
+    this.formdata = new FormGroup({
+      postText: new FormControl("")
+    })
   }
 
   loadpost(post: CompiledPost) {
@@ -42,6 +48,13 @@ export class FeedPageComponent {
   getAllPosts() {
     this.postal.getAllPosts().subscribe(
       (response) => { this.setPostset(response); },
+      (error) => { console.log(error); }
+    );
+  }
+
+  getAllUsers() {
+    this.useral.getAllUsers().subscribe(
+      (response) => { this.people = response; },
       (error) => { console.log(error); }
     );
   }
@@ -71,21 +84,23 @@ export class FeedPageComponent {
 
 
   createPost() {
-
-    const timeNow = new Date();
-    const postForm = new FormData();
-    postForm.append('user_id', this.user.user_id.toString());
-    postForm.append('content', this.postContent);
-    postForm.append('date', timeNow.toDateString());
-
-    if (this.postUrl) {
-      postForm.append('image', this.postUrl);
+    if (!this.formdata.valid) {
+      this.formdata.markAllAsTouched();
     }
+    else {
+      const timeNow = new Date();
+      const postForm = new FormData();
+      postForm.append('user_id', this.user.user_id.toString());
+      postForm.append('content', this.postContent);
+      postForm.append('date', timeNow.toDateString());
 
-    console.log(postForm);
+      if (this.postUrl) {
+        postForm.append('image', this.postUrl);
+      }
+
+      console.log(postForm);
 
     this.postal.makePost(postForm).subscribe(data => { console.log(data); this.getAllPosts(); });
-
   }
 
   setPostset(posts: any) {
