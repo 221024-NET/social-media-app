@@ -44,7 +44,7 @@
             </div>
 
             <div class="border">
-                <div *ngFor="let post of postset">
+                <div *ngFor="let post of postset;">
                     <div (click)="loadpost(post);">
                         <app-post-summary [selected]="post"></app-post-summary>
                     </div>

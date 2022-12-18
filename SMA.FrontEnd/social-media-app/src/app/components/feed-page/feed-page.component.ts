@@ -5,6 +5,7 @@ import { CompiledPost } from 'src/app/classes/compiled-post';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 import { PostService } from 'src/app/services/post.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-feed-page',
@@ -25,10 +26,10 @@ export class FeedPageComponent {
 
   constructor(private postal: PostService, dt: DataTransferService) {
     this.user = dt.findUser();//new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
+    this.postset = this.getAllPosts();
   }
 
   ngOnInit(): void {
-    this.postset = this.getAllPosts();
     // this.newpost = new FormGroup({
     //   themessage: new FormControl(""),
     // });
@@ -40,9 +41,9 @@ export class FeedPageComponent {
 
   getAllPosts() {
     this.postal.getAllPosts().subscribe(
-      (response) => { this.postset = response; },
+      (response) => { this.setPostset(response); },
       (error) => { console.log(error); }
-    )
+    );
   }
 
   onImgLoad(event: any) {
@@ -83,7 +84,12 @@ export class FeedPageComponent {
 
     console.log(postForm);
 
-    this.postal.makePost(postForm).subscribe();
+    this.postal.makePost(postForm).subscribe(data => { console.log(data); this.getAllPosts(); });
+
   }
 
+  setPostset(posts: any) {
+    this.postset = posts;
+    console.log('setPostset');
+  }
 }
