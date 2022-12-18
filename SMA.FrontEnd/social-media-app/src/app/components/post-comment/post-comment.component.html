@@ -1,0 +1,9 @@
+
+<div>
+  <h4>Post a Comment</h4>
+  <form (ngSubmit)="postAComment(commentForm)" #commentForm="ngForm">
+    <input name ="comment" type="text" ngModel/>
+    <button type="submit">Post Comment</button>
+  </form>
+</div>
+

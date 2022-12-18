@@ -15,7 +15,8 @@ import { PostComponent } from './components/PostComponents/post/post.component';
 import { PostSummaryComponent } from './components/PostComponents/post-summary/post-summary.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LikeComponent } from './components/like/like.component';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { PostCommentComponent } from './components/post-comment/post-comment.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     PostSummaryComponent,
     PostComponent,
     LikeComponent,
-    NavBarComponent
+    NavBarComponent,
+    PostCommentComponent
   ],
   imports: [
     BrowserModule,
