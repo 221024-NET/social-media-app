@@ -20,13 +20,14 @@ export class CommentComponent {
 
   @Input()
   public set com(com: CompiledComment) {
-    console.log(com);
+    //console.log(com);
     this._com = com;
+    this.getReplies()
   }
 
   getReplies() {
-    this.replial.getTopCommentsByPost(this._com.comment.comment_id).subscribe(
-      (response) => { /*console.log("getAllComments called");*/ this.replies = response; },
+    this.replial.getRepliesByComment(this._com.comment.comment_id).subscribe(
+      (response) => { console.log("getReplies called"); this.replies = response; console.log(response)},
       (error) => { /*console.log("getAllPosts called");*/ console.log(error); }
     )
   }
