@@ -27,11 +27,11 @@ export class FeedPageComponent {
   formdata: any;
 
   constructor(private postal: PostService, private useral:UserListService, dt: DataTransferService) {
-    this.user = dt.findUser();//new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
+    this.user = dt.findUser();
+    this.postset = this.getAllPosts();
   }
 
   ngOnInit(): void {
-    this.getAllPosts();
     this.getAllUsers();
     // this.newpost = new FormGroup({
     //   themessage: new FormControl(""),
@@ -47,9 +47,9 @@ export class FeedPageComponent {
 
   getAllPosts() {
     this.postal.getAllPosts().subscribe(
-      (response) => { this.postset = response; },
+      (response) => { this.setPostset(response); },
       (error) => { console.log(error); }
-    )
+    );
   }
 
   getAllUsers() {
@@ -100,8 +100,11 @@ export class FeedPageComponent {
 
       console.log(postForm);
 
-      this.postal.makePost(postForm).subscribe();
-    }
+    this.postal.makePost(postForm).subscribe(data => { console.log(data); this.getAllPosts(); });
   }
 
+  setPostset(posts: any) {
+    this.postset = posts;
+    console.log('setPostset');
+  }
 }
