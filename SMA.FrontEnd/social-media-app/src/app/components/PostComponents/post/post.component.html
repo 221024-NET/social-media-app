@@ -13,6 +13,10 @@
         <!--<button onclick="addlike()">(^-^)\_b</button>-->
         <!--img src="likethumb.png" alt="(^-^)\_b" /-->
     </div>
+    <div>
+        <app-like [parentPostID]="_selected.post.post_id"></app-like>
+    </div>
+
     <div class="post-comment">
       <app-post-comment [post_id]="_selected.post.post_id"></app-post-comment>
         <div *ngFor="let com of toplevelcomments">

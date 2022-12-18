@@ -25,7 +25,7 @@ export class FeedPageComponent {
   postUrl: any;
 
   constructor(private postal: PostService, dt: DataTransferService) {
-    this.user = new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
+    this.user = dt.findUser();//new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
   }
 
   ngOnInit(): void {
