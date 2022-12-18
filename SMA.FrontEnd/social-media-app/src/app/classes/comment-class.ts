@@ -5,7 +5,7 @@ export class CommentClass {
     post_id: number;
     parent_comment_id? : number;
 
-    constructor(cid:number,c:string,uid:number,pid:number,parcid:number)
+    constructor(cid:number,c:string,uid:number,pid:number,parcid?:number)
     {
         this.comment_id = cid;
         this.comment = c;
