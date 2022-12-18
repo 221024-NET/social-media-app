@@ -17,9 +17,9 @@ export class DataTransferService {
     console.log('setData for ' + user.user_id);
     this.subject.next(this.savedUser);
   }
-  
+
   getData(): Observable<User> {
-    console.log("getData called");
+    //console.log("getData called");
     return this.subject.asObservable();
   }
 

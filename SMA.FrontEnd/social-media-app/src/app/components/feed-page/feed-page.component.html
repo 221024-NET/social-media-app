@@ -22,10 +22,17 @@
                 </ul>
             </div>
             <div id="goals"  class="column border">
-                <form onsubmit="writePost(newpostmessage)">
-                    <input type="text" message="the message again">
-                    <button type="submit">post</button>
+                <form #postForm="ngForm" name="post" [hidden]="user.user_id <= 0">
+                    <div class="form-group">
+                        <label for="post-text">Text:</label>
+                        <input type="text" class="form-control" id="post-text" name="post-text" [(ngModel)]="postContent">
+                        <label for="post-image">Image:</label>
+                        <input type="file" class="form-control" id="post-image" name="post-image" (change)="onImgLoad($event)" #imgInput="ngModel" [(ngModel)]="postImage">
+                        <br/>
+                        <button type="submit" (click)="createPost()">Post</button>
+                    </div>
                 </form>
+
                 
                 <ul>
                     <li>11111111111</li>
@@ -45,7 +52,7 @@
             </div>
 
             <div class="border">
-                <div *ngFor="let post of postset.reverse()">
+                <div *ngFor="let post of postset">
                     <div (click)="loadpost(post);">
                         <app-post-summary [selected]="post"></app-post-summary>
                     </div>

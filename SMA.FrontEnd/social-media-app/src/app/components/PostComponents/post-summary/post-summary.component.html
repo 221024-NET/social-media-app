@@ -8,11 +8,13 @@
         <div>
             <span>{{_selected.post.content}}</span>
             <br />
-            <img class="post-img" src={{_selected.post.image}} />
-        </div>
+            <div [hidden]="!_selected.post.image">
+                <img class="post-img" src={{postImg}} />
+            </div>
 
+        </div>
         <div class="column">
-            <span>Likes#  </span>
+            <span>Likes# <app-like [parentPostID]="_selected.post.post_id"></app-like></span>
             <span>Comments#  </span>
         </div>
     </div>

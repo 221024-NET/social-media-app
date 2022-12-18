@@ -17,14 +17,11 @@ export class PostComponent {
   user = new User(0,"You!","");
   public _selected: CompiledPost = new CompiledPost(this.user, new PostClass(0,0,"Click something",new Date(),""));
   pd: Date = new Date();
+  postImg: any;
   toplevelcomments: any;
 
-  constructor(private commental:CommentService, user:DataTransferService) {
+  constructor(private commental: CommentService, user: DataTransferService) {
     //this.user = user.getData();
-  }
-
-  ngOnInit(): void {
-    //console.log(this.toplevelcomments);
   }
 
   @Input()
@@ -32,6 +29,7 @@ export class PostComponent {
     //console.log(selected);
     this._selected = selected;
     this.pd = selected.post.date;
+    this.postImg = 'data:image/*;base64,' + selected.post.image;
     this.getAllComments();
   }
 
@@ -40,5 +38,5 @@ export class PostComponent {
       (response) => { /*console.log("getAllComments called");*/ this.toplevelcomments = response; },
       (error) => { /*console.log("getAllPosts called");*/ console.log(error); }
     )
-  } 
+  }
 }
