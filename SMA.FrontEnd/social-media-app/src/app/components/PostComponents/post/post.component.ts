@@ -14,8 +14,8 @@ import { DataTransferService } from 'src/app/services/data-transfer.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  user = new User(0,"You!","");
-  public _selected: CompiledPost = new CompiledPost(this.user, new PostClass(0,0,"Click something",new Date(),""));
+  user = new User(0, "You!", "");
+  public _selected: CompiledPost = new CompiledPost(this.user, new PostClass(0, 0, "Click something", new Date(), ""));
   pd: Date = new Date();
   postImg: any;
   toplevelcomments: any;
@@ -29,7 +29,9 @@ export class PostComponent {
     //console.log(selected);
     this._selected = selected;
     this.pd = selected.post.date;
+
     this.postImg = 'data:image/*;base64,' + selected.post.image;
+
     this.getTopComments();
   }
 

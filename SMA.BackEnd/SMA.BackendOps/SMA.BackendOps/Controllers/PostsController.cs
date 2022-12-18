@@ -87,9 +87,6 @@ namespace SMA.BackendOps.Controllers
         [HttpPost]
         public async Task<ActionResult<Post>> PostPost([FromForm]Post post)
         {
-            //byte[] image = Convert.FromBase64String(post.image);
-            //post.image = image;
-
             _context.Posts.Add(post);
             await _context.SaveChangesAsync();
 
