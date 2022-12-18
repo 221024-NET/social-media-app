@@ -26,7 +26,7 @@ export class FeedPageComponent {
   postUrl: any = null;
   formdata: any;
 
-  constructor(private postal: PostService, private useral:UserListService, dt: DataTransferService) {
+  constructor(private postal: PostService, private useral: UserListService, dt: DataTransferService) {
     this.user = dt.findUser();
     this.postset = this.getAllPosts();
   }
@@ -100,7 +100,8 @@ export class FeedPageComponent {
 
       console.log(postForm);
 
-    this.postal.makePost(postForm).subscribe(data => { console.log(data); this.getAllPosts(); });
+      this.postal.makePost(postForm).subscribe(data => { this.getAllPosts(); });
+    }
   }
 
   setPostset(posts: any) {
