@@ -21,8 +21,7 @@ export class FeedPageComponent {
 
   //pid:number, uid:number, m:string, d:Date, img:string
   postContent: any;
-  postImage: any;
-  postUrl: any;
+  postUrl: any = null;
 
   constructor(private postal: PostService, dt: DataTransferService) {
     this.user = dt.findUser();//new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
@@ -48,31 +47,39 @@ export class FeedPageComponent {
 
   onImgLoad(event: any) {
     const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = e => {
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = e => {
 
-      let base64String = reader.result?.toString();
-      let base64Index;
-      if (base64String) {
-        base64Index = base64String.indexOf(',') + 1;
+        let base64String = reader.result?.toString();
+        let base64Index;
+        if (base64String) {
+          base64Index = base64String.indexOf(',') + 1;
+        }
+        else { base64Index = 0; }
+
+        this.postUrl = reader.result?.slice(base64Index);
       }
-      else { base64Index = 0; }
-
-      this.postUrl = reader.result?.slice(base64Index);
     }
+    else {
+      this.postUrl = null;
+    }
+
   }
 
 
   createPost() {
 
-    console.log('----------POSTURL----------', this.postUrl);
     const timeNow = new Date();
     const postForm = new FormData();
     postForm.append('user_id', this.user.user_id.toString());
     postForm.append('content', this.postContent);
     postForm.append('date', timeNow.toDateString());
-    postForm.append('image', this.postUrl);
+
+    if (this.postUrl) {
+      postForm.append('image', this.postUrl);
+    }
 
     console.log(postForm);
 

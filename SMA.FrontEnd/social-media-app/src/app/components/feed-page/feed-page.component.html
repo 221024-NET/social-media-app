@@ -27,7 +27,7 @@
                         <label for="post-text">Text:</label>
                         <input type="text" class="form-control" id="post-text" name="post-text" [(ngModel)]="postContent">
                         <label for="post-image">Image:</label>
-                        <input type="file" class="form-control" id="post-image" name="post-image" (change)="onImgLoad($event)" #imgInput="ngModel" [(ngModel)]="postImage">
+                        <input type="file" class="form-control" id="post-image" name="post-image" (change)="onImgLoad($event)">
                         <br/>
                         <button type="submit" (click)="createPost()">Post</button>
                     </div>
