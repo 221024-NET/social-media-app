@@ -30,10 +30,10 @@ export class PostComponent {
     this._selected = selected;
     this.pd = selected.post.date;
     this.postImg = 'data:image/*;base64,' + selected.post.image;
-    this.getAllComments();
+    this.getTopComments();
   }
 
-  getAllComments() {
+  getTopComments() {
     this.commental.getTopCommentsByPost(this._selected.post.post_id).subscribe(
       (response) => { /*console.log("getAllComments called");*/ this.toplevelcomments = response; },
       (error) => { /*console.log("getAllPosts called");*/ console.log(error); }
