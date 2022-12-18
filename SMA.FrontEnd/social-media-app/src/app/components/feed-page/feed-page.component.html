@@ -2,7 +2,7 @@
 <div class="column-structure-page">
     <div id="personal-section" class="column-section">
         <div class="row">
-            <div id="profile-block"  class="column border">
+            <div id="profile-block"  class="column border full-page">
                 <div class="row">
                     <span>Hello:</span>
                     <div class="column">
@@ -45,14 +45,14 @@
     </div>
 
 
-    <div id="post-block" class="column-section">
+    <div id="post-block" class="column-section full-page">
         <div class="row">
             <div id="post-block-header" class="border">
                 <p style="text-align:center">Recent posts</p>
             </div>
 
             <div class="border">
-                <div *ngFor="let post of postset.reverse()">
+                <div *ngFor="let post of postset">
                     <div (click)="loadpost(post);">
                         <app-post-summary [selected]="post"></app-post-summary>
                     </div>
@@ -63,7 +63,7 @@
     </div>
 
 
-    <div id="display-block" class="column-section border">
+    <div id="display-block" class="column-section border full-page" >
         <div class="row">
             <app-post [selected]="selected"></app-post>
         </div>
