@@ -5,6 +5,7 @@ import { CompiledPost } from 'src/app/classes/compiled-post';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 import { PostService } from 'src/app/services/post.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UserListService } from 'src/app/services/user-list.service';
 
 @Component({
   selector: 'app-feed-page',
@@ -18,17 +19,19 @@ export class FeedPageComponent {
   selected: CompiledPost = new CompiledPost(this.user, new PostClass(-1, 0, "", new Date(), ""));
 
   postset: any;
+  people: any;
 
   //pid:number, uid:number, m:string, d:Date, img:string
   postContent: any;
   postUrl: any = null;
 
-  constructor(private postal: PostService, dt: DataTransferService) {
+  constructor(private postal: PostService, private useral:UserListService, dt: DataTransferService) {
     this.user = dt.findUser();//new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
   }
 
   ngOnInit(): void {
-    this.postset = this.getAllPosts();
+    this.getAllPosts();
+    this.getAllUsers();
     // this.newpost = new FormGroup({
     //   themessage: new FormControl(""),
     // });
@@ -43,6 +46,13 @@ export class FeedPageComponent {
       (response) => { this.postset = response; },
       (error) => { console.log(error); }
     )
+  }
+
+  getAllUsers() {
+    this.useral.getAllUsers().subscribe(
+      (response) => { this.people = response; },
+      (error) => { console.log(error); }
+    );
   }
 
   onImgLoad(event: any) {

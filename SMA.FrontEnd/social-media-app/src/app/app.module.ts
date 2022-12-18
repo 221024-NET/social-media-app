@@ -19,6 +19,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PostCommentComponent } from './components/post-comment/post-comment.component'
 import { ReplyComponent } from './components/PostComponents/reply/reply.component';
 import { PostReplyComponent } from './components/post-reply/post-reply.component';
+import { QuickUserComponent } from './components/quick-user/quick-user.component';
 
 
 
@@ -39,6 +40,7 @@ import { PostReplyComponent } from './components/post-reply/post-reply.component
     ReplyComponent,
     PostCommentComponent,
     PostReplyComponent,
+    QuickUserComponent,
   ],
   imports: [
     BrowserModule,
