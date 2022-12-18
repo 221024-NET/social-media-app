@@ -33,17 +33,11 @@ namespace SMA.BackendOps.Controllers
                 var element = new UserAndComment(user, comment);
                 result.Add(element);
             }
-            //Console.WriteLine("GetComments done");
             return result;
         }
 
-
-
-
-
-
-// GET: api/Comments/5
-[HttpGet("{id}")]
+        // GET: api/Comments/5
+        [HttpGet("{id}")]
         public async Task<ActionResult<Comment>> GetComment(int id)
         {
             var comment = await _context.Comments.FindAsync(id);
@@ -112,6 +106,26 @@ namespace SMA.BackendOps.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+
+        //returns a LIST of comments to a post when passed a post_id, if no replies then returns nothing
+        //GET: api/Comments/byPost/2
+        [HttpGet("byPost/{post_id}")]
+        public async Task<ActionResult<IEnumerable<UserAndComment>>> GetTopComments(int post_id)
+        {
+            // get relevant comments from the db
+            var parent_comments = await _context.Comments.Where(c => c.post_id == post_id && c.parent_comment_id == null).ToListAsync();
+
+            // attach the user info to the new list of comments
+            var result = new List<UserAndComment>();
+            foreach (var comment in parent_comments)
+            {
+                var user = await _context.Users.FindAsync(comment.user_id);
+                var element = new UserAndComment(user, comment);
+                result.Add(element);
+            }
+            return result;
         }
 
         //returns a LIST of replies to a comment when passed a comment_id, if no replies then returns nothing

@@ -14,8 +14,8 @@ import { DataTransferService } from 'src/app/services/data-transfer.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  user = new User(0,"0u","");
-  public _selected: CompiledPost = new CompiledPost(this.user, new PostClass(0,0,"0msg",new Date(),""));
+  user = new User(0,"You!","");
+  public _selected: CompiledPost = new CompiledPost(this.user, new PostClass(0,0,"Click something",new Date(),""));
   pd: Date = new Date();
   toplevelcomments: any;
 
@@ -24,8 +24,7 @@ export class PostComponent {
   }
 
   ngOnInit(): void {
-    this.toplevelcomments = this.getAllComments();
-    console.log(this.toplevelcomments);
+    //console.log(this.toplevelcomments);
   }
 
   @Input()
@@ -33,12 +32,13 @@ export class PostComponent {
     //console.log(selected);
     this._selected = selected;
     this.pd = selected.post.date;
+    this.getAllComments();
   }
 
   getAllComments() {
-    this.commental.getAllComments().subscribe(
-      (response) => { console.log("getAllComments called"); this.toplevelcomments = response; },
-      (error) => { console.log("getAllPosts called"); console.log(error); }
+    this.commental.getTopCommentsByPost(this._selected.post.post_id).subscribe(
+      (response) => { /*console.log("getAllComments called");*/ this.toplevelcomments = response; },
+      (error) => { /*console.log("getAllPosts called");*/ console.log(error); }
     )
   } 
 }
