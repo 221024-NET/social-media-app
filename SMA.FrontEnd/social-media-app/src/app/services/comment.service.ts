@@ -18,16 +18,22 @@ export class CommentService {
     return this.http.get(this.url);
   }
 
-  public getPostByID(id: number) {
+  public getCommentByID(id: number) {
     return this.http.get(this.url + "/" + id);
   }
 
-  public deletePostByID(id: number) {
+  public deleteCommentByID(id: number) {
     return this.http.delete(this.url + "/" + id);
   }
 
   public getNumberOfLikes(id: number) {
     let endpoint = "/Posts/getNumberOfLikes/" + id;
+    return this.http.get(this.url + endpoint + id);
+  }
+
+  public getTopCommentsByPost(id: number) {
+    //console.log("getCommentsByPost called. post id: "+id);
+    const endpoint = "/byPost/";
     return this.http.get(this.url + endpoint + id);
   }
 }
