@@ -14,12 +14,13 @@ import { DataTransferService } from 'src/app/services/data-transfer.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  user = new User(0,"0u","");
-  public _selected: CompiledPost = new CompiledPost(this.user, new PostClass(0,0,"0msg",new Date(),""));
+  user = new User(0, "0u", "");
+  public _selected: CompiledPost = new CompiledPost(this.user, new PostClass(0, 0, "0msg", new Date(), ""));
   pd: Date = new Date();
+  postImg: any;
   toplevelcomments: any;
 
-  constructor(private commental:CommentService, user:DataTransferService) {
+  constructor(private commental: CommentService, user: DataTransferService) {
     //this.user = user.getData();
   }
 
@@ -33,6 +34,7 @@ export class PostComponent {
     //console.log(selected);
     this._selected = selected;
     this.pd = selected.post.date;
+    this.postImg = 'data:image/*;base64,' + selected.post.image;
   }
 
   getAllComments() {
@@ -40,5 +42,5 @@ export class PostComponent {
       (response) => { console.log("getAllComments called"); this.toplevelcomments = response; },
       (error) => { console.log("getAllPosts called"); console.log(error); }
     )
-  } 
+  }
 }

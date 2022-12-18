@@ -4,7 +4,7 @@
         <div class="post-user">@{{_selected.user.username}} posted: </div>
         <div class="post-date"> on {{pd}}</div>
     </div>
-    <img class="post-image" src={{_selected.post.image}} alt="image"/>
+    <img class="post-image" src={{postImg}} alt="image" [hidden]="!_selected.post.image"/>
     <div class="post-message">{{_selected.post.content}}</div>
     <!--app-post-likes count(user,date)></app-post-likes-->
     <div class="post-likes">
