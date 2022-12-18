@@ -18,6 +18,7 @@ import { LikeComponent } from './components/like/like.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PostCommentComponent } from './components/post-comment/post-comment.component'
 import { ReplyComponent } from './components/PostComponents/reply/reply.component';
+import { PostReplyComponent } from './components/post-reply/post-reply.component';
 
 
 
@@ -37,6 +38,7 @@ import { ReplyComponent } from './components/PostComponents/reply/reply.componen
     NavBarComponent,
     ReplyComponent,
     PostCommentComponent,
+    PostReplyComponent,
   ],
   imports: [
     BrowserModule,
