@@ -15,11 +15,16 @@
                     </div>
                 </div>
             </div>
-            <br /><p> </p>
-            <div id="stretch" class="column border">
-                <div>Your friends</div>
-                <ul>
-                </ul>
+
+            <br /><br />
+
+            <div id="list-users-section" class="column border">
+                <span>Find people you know</span>
+                <div id="list-users">
+                    <div *ngFor="let p of people">
+                        <app-quick-user [person]="p"></app-quick-user>
+                    </div>
+                </div>
             </div>
             <div id="goals"  class="column border">
                 <form #postForm="ngForm" name="post" [hidden]="user.user_id <= 0">
@@ -43,8 +48,8 @@
                 <p style="text-align:center">Recent posts</p>
             </div>
 
-            <div class="border">
-                <div *ngFor="let post of postset">
+            <div id="post-all" class="border">
+                <div *ngFor="let post of postset.reversse()">
                     <div (click)="loadpost(post);">
                         <app-post-summary [selected]="post"></app-post-summary>
                     </div>
@@ -55,8 +60,8 @@
     </div>
 
 
-    <div id="display-block" class="column-section border full-page" >
-        <div class="row">
+    <div id="display-block" class="column-section border full-page">
+        <div class="row" [hidden]="selected.user.user_id==0">
             <app-post [selected]="selected"></app-post>
         </div>
     </div>
