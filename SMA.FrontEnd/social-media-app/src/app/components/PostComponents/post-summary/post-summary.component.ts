@@ -10,11 +10,11 @@ import { User } from 'src/app/classes/user';
   styleUrls: ['./post-summary.component.css']
 })
 export class PostSummaryComponent {
-  public _selected: CompiledPost = new CompiledPost(new User(0,"0u",""), new PostClass(0,0,"0msg",new Date(),""));
+  public _selected: CompiledPost = new CompiledPost(new User(0, "0u", ""), new PostClass(0, 0, "0msg", new Date(), ""));
 
   @Input()
   public set selected(selected: CompiledPost) {
     this._selected = selected;
-    console.log(selected);
+    //console.log(selected);
   }
 }
