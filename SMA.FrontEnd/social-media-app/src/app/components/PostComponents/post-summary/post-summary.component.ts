@@ -20,4 +20,9 @@ export class PostSummaryComponent {
     this.postImg = 'data:image/*;base64,' + selected.post.image;
     //console.log(selected);
   }
+
+  constructor() {
+    console.log("current logged in user id: " + this._selected.user.user_id);
+  }
+
 }

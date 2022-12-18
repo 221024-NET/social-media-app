@@ -29,7 +29,12 @@ export class PostService {
   }
 
   public getNumberOfLikes(id: number) {
-    let endpoint = "/Posts/getNumberOfLikes/" + id;
-    return this.http.get(this.url + endpoint + id);
+    let endpoint = "/getNumberOfLikes/" + id;
+    return this.http.get<number>(this.url + endpoint);
+  }
+
+  public doesUserLikePost(postID: number, userID: number) {
+    let endpoint = "/doesUserLikePost/" + postID + "/" + userID;
+    return this.http.get<boolean>(this.url + endpoint);
   }
 }

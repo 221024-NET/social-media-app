@@ -16,16 +16,17 @@ export class NavBarComponent implements OnDestroy {
   subscription: Subscription;
 
   constructor(private dt: DataTransferService) {
+    
     this.subscription = dt.getData()
       .subscribe(data => {
         this.user = data;
-
         if (this.user.user_id > 0) {
           this.isLoggedIn = true;
           console.log("logged in");
         }
         else {
           this.isLoggedIn = false;
+          console.log(this.isLoggedIn);
         }
       });
   }

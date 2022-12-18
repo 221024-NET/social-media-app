@@ -1,8 +1,8 @@
 <div>
     Likes: {{numberOfLikes}}
     <mat-button-toggle-group name="like">
-        <mat-button-toggle *ngIf ="!likeClicked" class ="gray" id="like" (click)="incrementLike()">👍 Like</mat-button-toggle>
-        <mat-button-toggle *ngIf ="likeClicked" class="green" id="like" (click)="decrementLike()">👎 Unlike</mat-button-toggle> 
+        <mat-button-toggle *ngIf ="!likeClicked" class ="gray" id="like" (click)="incrementLike()">👍 Like {{parentPostID}} {{loggedInUserID}}</mat-button-toggle>
+        <mat-button-toggle *ngIf ="likeClicked" class="green" id="like" (click)="decrementLike()">👎 Unlike {{parentPostID}} {{loggedInUserID}}</mat-button-toggle> 
         
         <!-- <mat-button-toggle [ngClass]="{'red' : dislikeClicked}" id="dislike" (click)="decrementLike()" disabled="{{dislikeClicked}}">👎 Dislike</mat-button-toggle> -->
     </mat-button-toggle-group>
