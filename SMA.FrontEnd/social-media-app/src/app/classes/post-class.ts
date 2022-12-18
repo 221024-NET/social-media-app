@@ -3,7 +3,7 @@ export class PostClass {
     user_id: number;
     content: string;
     date: Date;
-    image?: string = "https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png";
+    image?: string;
 
     constructor(pid:number, uid:number, m:string, d:Date, img:string) {
         this.post_id = pid;
