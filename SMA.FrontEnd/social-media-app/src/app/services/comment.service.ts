@@ -36,4 +36,9 @@ export class CommentService {
     const endpoint = "/byPost/";
     return this.http.get(this.url + endpoint + id);
   }
+  
+  public getRepliesByComment(cid: number) {
+    const endpoint = "/replies/"
+    return this.http.get(this.url + endpoint + cid);
+  }
 }

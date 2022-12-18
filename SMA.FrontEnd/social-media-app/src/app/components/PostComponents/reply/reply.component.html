@@ -1,9 +1,9 @@
 <p>reply works!</p>
-<div class="reply-box">
+<div id="reply-box">
     <div *ngFor="let r of _replies">
-        <div class="reply-header">
-            <span class="reply-user">@{{r.user.username}} commented </span>
+        <div id="reply-header">
+            <span id="reply-user">@{{r.user.username}} commented </span>
         </div>
-        <div class="reply-message">{{r.comment.comment}}</div>
+        <div id="reply-message">{{r.comment.comment}}</div>
     </div>
 </div>

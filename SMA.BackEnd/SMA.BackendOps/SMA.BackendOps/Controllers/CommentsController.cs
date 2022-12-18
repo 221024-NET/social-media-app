@@ -131,10 +131,20 @@ namespace SMA.BackendOps.Controllers
         //returns a LIST of replies to a comment when passed a comment_id, if no replies then returns nothing
         //GET: api/Comments/replies/2
         [HttpGet("replies/{id}")]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetReplies(int id)
+        public async Task<ActionResult<IEnumerable<UserAndComment>>> GetReplies(int id)
         {
+            // get relevant replies from the db
             var replies = await _context.Comments.Where(r => r.parent_comment_id == id).ToListAsync();
-            return replies;
+
+            // attach the user info to the list of replies
+            var result = new List<UserAndComment>();
+            foreach (var comment in replies)
+            {
+                var user = await _context.Users.FindAsync(comment.user_id);
+                var element = new UserAndComment(user, comment);
+                result.Add(element);
+            }
+            return result;
         }
 
         private bool CommentExists(int id)
