@@ -31,7 +31,7 @@ export class PostCommentComponent implements OnInit {
   }
 
 
-  postAComment(form: NgForm) {
+  postAComment(form: any) {
     if (!this.formdata.valid) {
       this.formdata.markAllAsTouched();
     }
