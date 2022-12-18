@@ -27,10 +27,13 @@
                 </div>
             </div>
             <div id="goals"  class="column border">
-                <form #postForm="ngForm" name="post" [hidden]="user.user_id <= 0">
+                <form [formGroup]="formdata" #postForm="ngForm" name="post" [hidden]="user.user_id <= 0">
                     <div class="form-group">
                         <label for="post-text">Text:</label>
-                        <input type="text" class="form-control" id="post-text" name="post-text" [(ngModel)]="postContent">
+                        <input type="text" class="form-control" id="post-text" name="post-text" [(ngModel)]="postContent" formControlName="postText" required>
+                        <div *ngIf="formdata.controls['postText'].invalid && (formdata.controls['postText'].dirty || formdata.controls['postText'].touched)">
+                            <div *ngIf="formdata.controls['postText'].errors.required">Please enter post text.</div>
+                            </div>
                         <label for="post-image">Image:</label>
                         <input type="file" class="form-control" id="post-image" name="post-image" (change)="onImgLoad($event)">
                         <br/>
