@@ -8,11 +8,12 @@
 .column-structure-page {
     display: flex;
     justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 1%;
 }
 
 .column-section {
-    margin: 10px;
-    width: 32%;
+    width: 30%;
 }
 
 .row
@@ -25,8 +26,12 @@
     flex-direction: column;
 }
 
-#profile-block {
+.inter-backg {
+    background-color:darkslateblue;
+}
 
+#profile-block {
+    margin-bottom: 20px;
 }
 
 #profile-header {}
@@ -44,6 +49,10 @@
 #post-all {
     height:80vh;
     overflow: auto;
+}
+
+#list-users-section {
+    margin-bottom: 20px;
 }
 
 #list-users {

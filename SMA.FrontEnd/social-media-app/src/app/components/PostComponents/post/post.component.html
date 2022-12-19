@@ -1,19 +1,12 @@
 
-<div class="post-block">
-    <div class="post-header">
+<div id="post-block">
+    <div id="post-header">
         <div class="post-user">@{{_selected.user.username}} posted: </div>
         <div class="post-date"> on {{pd}}</div>
     </div>
-    <img class="post-image" src={{postImg}} alt="image" [hidden]="!_selected.post.image"/>
+    <img id="post-image" src={{postImg}} alt="image" [hidden]="!_selected.post.image"/>
     <div class="post-message">{{_selected.post.content}}</div>
-    <!--app-post-likes count(user,date)></app-post-likes-->
     <div class="post-likes">
-        <!-- <app-like [parentPostID]="_selected.post.post_id"></app-like> -->
-        <!--<span> {{post.likecount}}</span>-->
-        <!--<button onclick="addlike()">(^-^)\_b</button>-->
-        <!--img src="likethumb.png" alt="(^-^)\_b" /-->
-    </div>
-    <div>
         <app-like [parentPostID]="_selected.post.post_id"></app-like>
     </div>
 
