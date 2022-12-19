@@ -42,19 +42,19 @@
 }
 
 #post-all {
-    height:500px;
+    height:80vh;
     overflow: auto;
 }
 
 #list-users {
-    height: 100px;
+    height: 40vh;
     overflow: auto;
 }
 
 #goals {}
 
 #display-block {
-    height:560px;
+    height:85.5vh;
     overflow: auto;
 }
 
