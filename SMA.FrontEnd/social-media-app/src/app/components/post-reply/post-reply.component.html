@@ -1,8 +1,11 @@
 
 <div>
-  <p style="text-align: center;">Post a Reply</p>
-  <form (ngSubmit)="postAReply(replyForm)" #replyForm="ngForm">
-    <input name="comment" type="text" ngModel />
+  <span>Post a Reply</span>
+  <form [formGroup]="formdata" (ngSubmit)="postAReply(replyForm)" #replyForm="ngForm">
+    <input formControlName="comment" name="comment" type="text" ngModel required/>
+    <div *ngIf="formdata.controls['comment'].invalid && (formdata.controls['comment'].dirty || formdata.controls['comment'].touched)">
+      <div *ngIf="formdata.controls['comment'].errors.required" class="reply-error">Please enter reply text.</div>
+      </div>
     <button type="submit">Post Reply</button>
   </form>
 </div>
