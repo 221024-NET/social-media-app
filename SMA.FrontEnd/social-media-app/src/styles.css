@@ -102,9 +102,9 @@ navbar-brand {
     display: flex;
     background-color: var(--dark-blue-accent);
     color: var(--text-light);
+    border:2px;
+    border-style: groove;
 }
-
-#post-sum-header {}
 
 .column {
     flex-direction: column;
@@ -114,9 +114,9 @@ navbar-brand {
     flex-direction: row;
 }
 
-.post-img {
-    height: 100px;
-    width: auto;
+#post-sum-img {
+    max-width: 100%;
+    max-height: 100px;
 }
 
 .post-block {
@@ -143,10 +143,9 @@ navbar-brand {
 }
 
 .post-date {
-    color: var(--dark-blue-accent);
 }
 
-.post-image {
+#post-image {
     text-align:center;
     height: 350px;
 }
@@ -156,7 +155,6 @@ navbar-brand {
 }
 
 .post-likes {
-    color: var(--dark-blue-main);
     text-align:right;
     border: 5px;
     border-color: var(--dark-blue-accent);
@@ -168,13 +166,13 @@ navbar-brand {
 
 .comment-margin {
     margin: 1%;
-    background-color:var(--text-light);
-    border: 0px;
+    border-color:var(--text-light);
+    border: 2px;
 }
 
 .comment-box {
     margin: 1%;
-    background-color: var(--text-light);
+    background-color:var(--dark-blue-accent)
 }
 
 .comment-header {
@@ -193,8 +191,6 @@ navbar-brand {
 .comment-user {
     display:flex;
     flex-direction: row;
-    color:var(--dark-blue-accent);
-
 }
 
 .comment-date {
@@ -204,5 +200,14 @@ navbar-brand {
 
 .comment-message {
     /* background-color: black; */
-    color: var(--dark-blue-main);
+}
+
+#reply-box
+{
+    background-color: darkblue;
+    margin-left:5px;
+}
+
+.reply-error {
+    color: black;
 }

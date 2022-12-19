@@ -1,10 +1,4 @@
 
-.border {
-    border: 3px;
-    border-style: solid;
-    border-color: pink;
-}
-
 .column-structure-page {
     display: flex;
     justify-content: space-between;
@@ -34,13 +28,6 @@
     margin-bottom: 20px;
 }
 
-#profile-header {}
-
-#personal-section {}
-
-#post-block {
-}
-
 #post-block-header {
     align-content: center;
     margin-bottom: 20px;
@@ -59,8 +46,6 @@
     height: 100px;
     overflow: auto;
 }
-
-#goals {}
 
 #display-block {
     height:560px;

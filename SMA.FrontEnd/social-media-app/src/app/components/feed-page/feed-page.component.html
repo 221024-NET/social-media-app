@@ -54,7 +54,7 @@
 
             <div id="post-all" class="border inter-backg">
                 <br />
-                <div *ngFor="let post of postset.reverse()">
+                <div *ngFor="let post of postset">
                     <div (click)="loadpost(post);">
                         <app-post-summary [selected]="post"></app-post-summary>
                     </div>
