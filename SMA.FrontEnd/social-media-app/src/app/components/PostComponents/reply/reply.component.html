@@ -1,8 +1,10 @@
 <div id="reply-box">
     <div *ngFor="let r of _replies">
-        <div id="reply-header">
-            <span id="reply-user">@{{r.user.username}} commented </span>
+        <div id="reply-data">
+            <div id="reply-header">
+                <span id="reply-user">@{{r.user.username}} commented </span>
+            </div>
+            <div id="reply-message">{{r.comment.comment}}</div>
         </div>
-        <div id="reply-message">{{r.comment.comment}}</div>
     </div>
 </div>

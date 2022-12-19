@@ -1,5 +1,5 @@
 
-<div>
+<div id="reply-create">
   <span>Post a Reply</span>
   <form [formGroup]="formdata" (ngSubmit)="postAReply(replyForm)" #replyForm="ngForm">
     <input formControlName="comment" name="comment" type="text" ngModel required/>

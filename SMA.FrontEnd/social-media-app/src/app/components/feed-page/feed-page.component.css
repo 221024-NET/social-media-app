@@ -1,10 +1,4 @@
 
-.border {
-    border: 3px;
-    border-style: solid;
-    border-color: pink;
-}
-
 .column-structure-page {
     display: flex;
     justify-content: space-between;
@@ -34,25 +28,19 @@
     margin-bottom: 20px;
 }
 
-#profile-header {}
-
-#personal-section {}
-
-#post-block {
-}
-
 #post-block-header {
     align-content: center;
-    margin-bottom: 20px;
+    height: 6vh;
+    margin-bottom: 2vh;
 }
 
 #post-all {
-    height:80vh;
+    height:82vh;
     overflow: auto;
 }
 
 #list-users-section {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 #list-users {
@@ -60,11 +48,9 @@
     overflow: auto;
 }
 
-#goals {}
-
 #display-block {
-    height:85.5vh;
-    overflow: auto;
+    height:90vh;
+    overflow-x: hidden;
 }
 
 #profile-img {
