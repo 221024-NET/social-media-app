@@ -4,14 +4,14 @@
         <div class="row">
             <div id="profile-block"  class="column border inter-backg full-page">
                 <div class="row">
-                    <span>Hello:</span>
+                    <p>Welcome back!</p>
+                    <br/>
                     <div class="column">
-                        <div>
+                        <!-- <div>
                             <img id="profile-img" src="https://www.katherineannward.com/Images/Thumbnails/25thHourTarotThumb.png" />
-                        </div>
-                        <span>{{user.username}}</span>
-                        <br />
-                        <span>{{user.first_name}}</span>
+                        </div> -->
+                        <div>{{user.first_name}} {{user.last_name}}</div>
+                        <div>@{{user.username}}</div>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <br /><br />
 
             <div id="list-users-section" class="column border inter-backg">
-                <span>Find people you know</span>
+                <p>Find people you know:</p>
                 <div id="list-users">
                     <div *ngFor="let p of people">
                         <app-quick-user [person]="p"></app-quick-user>
@@ -54,7 +54,7 @@
 
             <div id="post-all" class="border inter-backg">
                 <br />
-                <div *ngFor="let post of postset">
+                <div *ngFor="let post of postset.reverse()">
                     <div (click)="loadpost(post);">
                         <app-post-summary [selected]="post"></app-post-summary>
                     </div>

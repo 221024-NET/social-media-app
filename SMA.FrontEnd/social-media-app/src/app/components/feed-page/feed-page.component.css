@@ -30,26 +30,27 @@
 
 #post-block-header {
     align-content: center;
-    margin-bottom: 20px;
+    height: 6vh;
+    margin-bottom: 2vh;
 }
 
 #post-all {
-    height:500px;
+    height:82vh;
     overflow: auto;
 }
 
 #list-users-section {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 #list-users {
-    height: 100px;
+    height: 40vh;
     overflow: auto;
 }
 
 #display-block {
-    height:560px;
-    overflow: auto;
+    height:90vh;
+    overflow-x: hidden;
 }
 
 #profile-img {

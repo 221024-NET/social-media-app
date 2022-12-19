@@ -1,5 +1,5 @@
-<div>
-    Likes: {{numberOfLikes}}
+<div class="global">
+    <div class="likes">Likes: {{numberOfLikes}}</div>
     <mat-button-toggle-group name="like">
         <mat-button-toggle *ngIf ="!likeClicked" class ="unliked" id="like" (click)="incrementLike()">👍 Like</mat-button-toggle>
         <mat-button-toggle *ngIf ="likeClicked" class="liked" id="like" (click)="decrementLike()">👎 Unlike</mat-button-toggle> 

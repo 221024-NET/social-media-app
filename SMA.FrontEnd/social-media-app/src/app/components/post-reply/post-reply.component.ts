@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { CommentService } from 'src/app/services/comment.service';
 import { CommentClass } from '../../classes/comment-class';
@@ -17,7 +17,7 @@ export class PostReplyComponent implements OnInit {
 
   @Input() post_id: number = 0;
   @Input() comment_id: number = 0;
-
+  @Output() addReplyEvent = new EventEmitter<string>();
   formdata:any;
 
   constructor(private commental: CommentService, private use: DataTransferService) {
@@ -44,7 +44,7 @@ export class PostReplyComponent implements OnInit {
       this.model.parent_comment_id = this.comment_id;
       console.log("parent comment id: "+this.model.parent_comment_id);
       this.commental.makePost(this.model).subscribe(
-        (response) => { console.log("making a comment") },
+        (response) => { this.addReplyEvent.emit("making a reply") },
         (error) => { console.log(error); }
       );  
     }
