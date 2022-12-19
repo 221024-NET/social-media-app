@@ -2,7 +2,7 @@
 <div class="column-structure-page">
     <div id="personal-section" class="column-section">
         <div class="row">
-            <div id="profile-block"  class="column border full-page">
+            <div id="profile-block"  class="column border inter-backg full-page">
                 <div class="row">
                     <span>Hello:</span>
                     <div class="column">
@@ -18,7 +18,7 @@
 
             <br /><br />
 
-            <div id="list-users-section" class="column border">
+            <div id="list-users-section" class="column border inter-backg">
                 <span>Find people you know</span>
                 <div id="list-users">
                     <div *ngFor="let p of people">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div id="goals"  class="column border">
+            <div id="goals"  class="column border inter-backg">
                 <form #postForm="ngForm" name="post" [hidden]="user.user_id <= 0">
                     <div class="form-group">
                         <label for="post-text">Text:</label>
@@ -44,12 +44,13 @@
 
     <div id="post-block" class="column-section full-page">
         <div class="row">
-            <div id="post-block-header" class="border">
+            <div id="post-block-header" class="border inter-backg">
                 <p style="text-align:center">Recent posts</p>
             </div>
 
-            <div id="post-all" class="border">
-                <div *ngFor="let post of postset.reversse()">
+            <div id="post-all" class="border inter-backg">
+                <br />
+                <div *ngFor="let post of postset">
                     <div (click)="loadpost(post);">
                         <app-post-summary [selected]="post"></app-post-summary>
                     </div>
@@ -60,7 +61,7 @@
     </div>
 
 
-    <div id="display-block" class="column-section border full-page">
+    <div id="display-block" class="column-section border inter-backg full-page">
         <div class="row" [hidden]="selected.user.user_id==0">
             <app-post [selected]="selected"></app-post>
         </div>
