@@ -24,17 +24,21 @@ export class FeedPageComponent {
   //pid:number, uid:number, m:string, d:Date, img:string
   postContent: any;
   postUrl: any = null;
+  formdata: any;
 
-  constructor(private postal: PostService, private useral:UserListService, dt: DataTransferService) {
-    this.user = dt.findUser();//new User(7, 'Testing', 'Purposes');//dt.findUser(); ///////////////REMOVE BEFORE FINAL
+  constructor(private postal: PostService, private useral: UserListService, dt: DataTransferService) {
+    this.user = dt.findUser();
+    this.postset = this.getAllPosts();
   }
 
   ngOnInit(): void {
-    this.getAllPosts();
     this.getAllUsers();
     // this.newpost = new FormGroup({
     //   themessage: new FormControl(""),
     // });
+    this.formdata = new FormGroup({
+      postText: new FormControl("")
+    })
   }
 
   loadpost(post: CompiledPost) {
@@ -43,9 +47,9 @@ export class FeedPageComponent {
 
   getAllPosts() {
     this.postal.getAllPosts().subscribe(
-      (response) => { this.postset = response; },
+      (response) => { this.setPostset(response); },
       (error) => { console.log(error); }
-    )
+    );
   }
 
   getAllUsers() {
@@ -80,20 +84,31 @@ export class FeedPageComponent {
 
 
   createPost() {
-
-    const timeNow = new Date();
-    const postForm = new FormData();
-    postForm.append('user_id', this.user.user_id.toString());
-    postForm.append('content', this.postContent);
-    postForm.append('date', timeNow.toDateString());
-
-    if (this.postUrl) {
-      postForm.append('image', this.postUrl);
+    if (!this.formdata.valid) {
+      this.formdata.markAllAsTouched();
     }
+    else {
+      const timeNow = new Date();
+      const postForm = new FormData();
+      postForm.append('user_id', this.user.user_id.toString());
+      postForm.append('content', this.postContent);
+      postForm.append('date', timeNow.toDateString());
 
-    console.log(postForm);
+      if (this.postUrl) {
+        postForm.append('image', this.postUrl);
+      }
 
-    this.postal.makePost(postForm).subscribe();
+      console.log(postForm);
+
+      this.postal.makePost(postForm).subscribe(data => { this.getAllPosts(); });
+    }
+  }
+
+  setPostset(posts: any) {
+    this.postset = posts;
+    console.log('setPostset');
   }
 
 }
+
+

@@ -1,8 +1,11 @@
 
 <div>
   <h4>Post a Comment</h4>
-  <form (ngSubmit)="postAComment(commentForm)" #commentForm="ngForm">
-    <input name ="comment" type="text" ngModel/>
+  <form [formGroup]="formdata" (ngSubmit)="postAComment(commentForm)" #commentForm="ngForm">
+    <input formControlName="comment" name ="comment" type="text" ngModel required/>
+    <div *ngIf="formdata.controls['comment'].invalid && (formdata.controls['comment'].dirty || formdata.controls['comment'].touched)">
+      <div *ngIf="formdata.controls['comment'].errors.required">Please enter comment text.</div>
+      </div>
     <button type="submit">Post Comment</button>
   </form>
 </div>
