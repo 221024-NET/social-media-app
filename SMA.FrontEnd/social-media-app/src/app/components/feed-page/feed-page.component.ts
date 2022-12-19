@@ -108,4 +108,7 @@ export class FeedPageComponent {
     this.postset = posts;
     console.log('setPostset');
   }
+
 }
+
+

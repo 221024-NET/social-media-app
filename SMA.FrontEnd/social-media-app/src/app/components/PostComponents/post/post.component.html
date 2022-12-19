@@ -11,7 +11,7 @@
     </div>
 
     <div class="post-comment">
-      <app-post-comment [post_id]="_selected.post.post_id"></app-post-comment>
+      <app-post-comment [post_id]="_selected.post.post_id" (addCommentEvent)="addComment($event)"></app-post-comment>
         <div *ngFor="let com of toplevelcomments">
             <br />
             <app-comment [com]="com"></app-comment>

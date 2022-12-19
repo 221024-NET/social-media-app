@@ -31,4 +31,12 @@ export class CommentComponent {
       (error) => { /*console.log("getAllPosts called");*/ console.log(error); }
     )
   }
+
+  addReply(message: string) {
+    console.log(message);
+    this.replial.getRepliesByComment(this._com.comment.comment_id).subscribe(
+      (response) => { console.log("getReplies called"); this.replies = response; console.log(response) },
+      (error) => { /*console.log("getAllPosts called");*/ console.log(error); }
+    )
+  }
 }
